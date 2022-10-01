@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>JewelleryCalculationSuite</id>
+    <version>1.0.0</version>
+    <authors>JewelleryCalculationSuite</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0-windows7.0">
+        <dependency id="Caliburn.Micro" version="4.0.212" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net6.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\bin\Debug\net6.0-windows\JewelleryCalculationSuite.runtimeconfig.json" target="lib\net6.0-windows7.0\JewelleryCalculationSuite.runtimeconfig.json" />
+    <file src="C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\bin\Debug\net6.0-windows\JewelleryCalculationSuite.dll" target="lib\net6.0-windows7.0\JewelleryCalculationSuite.dll" />
+  </files>
+</package>

@@ -1,0 +1,55 @@
+﻿<Window x:Class="JewelleryCalculationSuite.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JewelleryCalculationSuite.Views"
+        mc:Ignorable="d" FontSize="24" FontFamily="Segoe UI"
+        Title="Jewellery Calculation Suite" Height="550" Width="900">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <!-- Side bar colour -->
+        <TextBlock Grid.Column="0" 
+                   Grid.Row="0" 
+                   Grid.RowSpan="8" 
+                   Grid.ColumnSpan="2" 
+                   Background="LightBlue" />
+        
+        <ContentControl x:Name="ActiveItem" Grid.Row="1" Grid.Column="2" Grid.RowSpan="6" MinWidth="400"/>
+
+        <!-- Metal Converter Button -->
+        <Button x:Name="LoadPageMetalConverter" 
+                Grid.Row="1" 
+                Grid.Column="1"
+                Margin="0,0,20,0" >
+            Metal Converter </Button>
+        
+        <!-- Ring Resize Button -->
+        <Button x:Name="LoadPageRingWeight" 
+                Grid.Row="2" 
+                Grid.Column="1"
+                Margin="0,0,20,0" >
+            Ring Weight</Button>
+        
+    </Grid>
+</Window>
