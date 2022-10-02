@@ -10,7 +10,13 @@
     <Compile Update="Views\MetalConverterView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\RingResizerView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\RingWeightView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\RollingWireView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\ShellView.xaml.cs">
@@ -21,7 +27,13 @@
     <Page Update="Views\MetalConverterView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\RingResizerView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\RingWeightView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\RollingWireView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ShellView.xaml">

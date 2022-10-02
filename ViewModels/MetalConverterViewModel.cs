@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 
 namespace JewelleryCalculationSuite.ViewModels 
 {
-    public class MetalConverterViewModel : Screen
+    public class MetalConverterViewModel : CalcFunctions
     {      
         private BindableCollection<MetalModel> _metals;
         private MetalModel _origSelectedMetal;
         private MetalModel _newSelectedMetal;
-        private string _origMetalWeight;
-        private string _metalCalcText;
+        private string _origMetalWeight = "";
 
         public MetalConverterViewModel(BindableCollection<MetalModel> metals)
         {
@@ -60,26 +59,9 @@ namespace JewelleryCalculationSuite.ViewModels
                 _origMetalWeight = value;
                 NotifyOfPropertyChange(() => OrigMetalWeight);
             }
-        }
+        }      
 
-        public string MetalCalcText
-        {
-            get { return _metalCalcText; }
-            set
-            {
-                _metalCalcText = value;
-                NotifyOfPropertyChange(() => MetalCalcText);
-            }
-        }
-
-        private static bool IsDouble(string input)
-        {
-            bool isDouble = Double.TryParse(input, out _);
-            if (isDouble) return true;
-            return false;
-        }       
-
-        public void CalculateButton()
+        public override void CalculateButton()
         {
             if (OrigSelectedMetal != null && NewSelectedMetal != null && OrigMetalWeight != null && IsDouble(OrigMetalWeight))
             {
@@ -90,11 +72,11 @@ namespace JewelleryCalculationSuite.ViewModels
                     weight *= 1.0 / OrigSelectedMetal.SpecificGravity;
                     weight *= NewSelectedMetal.SpecificGravity;
 
-                    MetalCalcText = weight.ToString("F3") + "g";
+                    CalculateText = weight.ToString("F3") + "g";
                 }
-                else { MetalCalcText = ("Invalid Input"); }
+                else { CalculateText = ("Invalid Input"); }
             }
-            else { MetalCalcText = ("Invalid Input"); }
+            else { CalculateText = ("Invalid Input"); }
         }
     }
 }

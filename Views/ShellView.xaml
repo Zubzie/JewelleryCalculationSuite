@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JewelleryCalculationSuite.Views"
         mc:Ignorable="d" FontSize="24" FontFamily="Segoe UI"
-        Title="Jewellery Calculation Suite" Height="550" Width="900">
+        Title="Jewellery Calculation Suite" Height="650" Width="900">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -44,12 +44,26 @@
                 Margin="0,0,20,0" >
             Metal Converter </Button>
         
-        <!-- Ring Resize Button -->
+        <!-- Ring Weight Button -->
         <Button x:Name="LoadPageRingWeight" 
                 Grid.Row="2" 
                 Grid.Column="1"
                 Margin="0,0,20,0" >
             Ring Weight</Button>
-        
+
+        <!-- Ring Resize Button -->
+        <Button x:Name="LoadPageRingResizer" 
+                Grid.Row="3" 
+                Grid.Column="1"
+                Margin="0,0,20,0" >
+            Ring Resizer</Button>
+
+        <!-- Rolling Wire Button -->
+        <Button x:Name="LoadPageRollingWire" 
+                Grid.Row="4" 
+                Grid.Column="1"
+                Margin="0,0,20,0" >
+            Rolling Wire</Button>
+
     </Grid>
 </Window>

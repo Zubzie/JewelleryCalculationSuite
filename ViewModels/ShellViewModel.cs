@@ -31,6 +31,16 @@ namespace JewelleryCalculationSuite.ViewModels
             ActivateItemAsync(new RingWeightViewModel(_metals, _ringSizes, _profiles));
         }
 
+        public void LoadPageRingResizer()
+        {
+            ActivateItemAsync(new RingResizerViewModel(_metals, _ringSizes, _profiles));
+        }
+
+        public void LoadPageRollingWire()
+        {
+            ActivateItemAsync(new RollingWireViewModel(_metals, _profiles));
+        }
+
         public void AddDefaultMetals()
         {
             _metals.Add(new MetalModel("Fine Silver", 10.64));

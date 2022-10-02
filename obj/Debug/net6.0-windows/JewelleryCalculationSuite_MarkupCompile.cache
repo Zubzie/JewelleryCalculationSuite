@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\App.xaml
-3-584657683
+51175845159
 
-12-1294922938
+17-1505506651
 198-1151452769
-Views\MetalConverterView.xaml;Views\RingWeightView.xaml;Views\ShellView.xaml;
+Views\MetalConverterView.xaml;Views\RingResizerView.xaml;Views\RingWeightView.xaml;Views\RollingWireView.xaml;Views\ShellView.xaml;
 
 False
 

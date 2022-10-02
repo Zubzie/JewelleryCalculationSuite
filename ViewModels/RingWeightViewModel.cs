@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JewelleryCalculationSuite.ViewModels
 {
-    public class RingWeightViewModel : Screen
+    public class RingWeightViewModel : CalcFunctions
     {
         private BindableCollection<MetalModel> _metals;
         private BindableCollection<RingSizeModel> _ringSizes;
@@ -16,10 +16,8 @@ namespace JewelleryCalculationSuite.ViewModels
         private MetalModel _selectedMetal;
         private RingSizeModel _selectedRingSize;
         private ProfileModel _selectedProfile;
-        private string _ringWidth;
-        private string _ringThickness;
-        private string _metalCalcText;
-        protected const double pi = 3.14159265359;
+        private string _ringWidth = "";
+        private string _ringThickness = "";        
 
         public RingWeightViewModel(BindableCollection<MetalModel> metals, BindableCollection<RingSizeModel> ringSizes, BindableCollection<ProfileModel> profiles)
         {
@@ -95,28 +93,11 @@ namespace JewelleryCalculationSuite.ViewModels
             }
         }
 
-        public string MetalCalcText
-        {
-            get { return _metalCalcText; }
-            set
-            {
-                _metalCalcText = value;
-                NotifyOfPropertyChange(() => MetalCalcText);
-            }
-        }
-
-        private static bool IsDouble(string input)
-        {
-            bool isDouble = Double.TryParse(input, out _);
-            if (isDouble) return true;
-            return false;
-        }
-
-        public void CalculateButton()
+        public override void CalculateButton()
         {            
             if (SelectedMetal != null && SelectedRingSize != null && SelectedProfile != null && IsDouble(RingWidth))
             {
-                double weight = 0;                
+                double weight;                
                 double length = SelectedRingSize.Diameter;
                 double width = Convert.ToDouble(RingWidth);
                 double thickness = Convert.ToDouble(RingWidth);
@@ -129,14 +110,14 @@ namespace JewelleryCalculationSuite.ViewModels
                 if (width > 0 && thickness > 0)
                 {
                     if (SelectedProfile.Shape == "Round") { weight = (pi * Math.Pow(width, 2) * (length + width)) * SelectedMetal.SpecificGravity / 1000; }
-                    else if (SelectedProfile.Shape == "Half-Round") { weight = (pi * Math.Pow(1.5 * thickness, 2) * (length + width + thickness)) * SelectedMetal.SpecificGravity / 1000; }
+                    else if (SelectedProfile.Shape == "Half-Round") { weight = ((pi * Math.Pow(width, 2)) * (length + width + thickness)) * SelectedMetal.SpecificGravity / 1000; }
                     else if (SelectedProfile.Shape == "Square") { weight = (length + width + width) * pi * width * thickness * SelectedMetal.SpecificGravity / 1000; }
                     else weight = (length + width + thickness) * pi * width * thickness * SelectedMetal.SpecificGravity / 1000;
-                    MetalCalcText = weight.ToString("F3") + "g";
+                    CalculateText = weight.ToString("F3") + "g";
                 }
-                else { MetalCalcText = ("Invalid Input"); }
+                else { CalculateText = ("Invalid Input"); }
             }
-            else { MetalCalcText = ("Invalid Input"); }
+            else { CalculateText = ("Invalid Input"); }
         }
     }
 }

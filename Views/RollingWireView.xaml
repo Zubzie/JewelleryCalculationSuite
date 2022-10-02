@@ -1,0 +1,149 @@
+﻿<UserControl x:Class="JewelleryCalculationSuite.Views.RollingWireView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:JewelleryCalculationSuite.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0"/>
+        </Grid.RowDefinitions>
+
+        <!-- Heading -->
+        <TextBlock Text="Rolling Wire" 
+                   Grid.Column="2" 
+                   Grid.Row="1" 
+                   FontSize="32" 
+                   FontWeight="Bold" 
+                   Grid.ColumnSpan="3" 
+                   Margin="20,0,0,20" />
+
+        <!-- Metal text -->
+        <TextBlock Grid.Column="2" 
+                   Grid.Row="2" 
+                   Text="Metal" 
+                   Margin="50,10,50,10" />
+
+        <!-- Metal drop down box -->
+        <ComboBox x:Name="MetalsDropDown"
+                  Grid.Column="3" 
+                  Grid.Row="2"
+                  Margin="10"                 
+                  SelectedItem="{Binding Path=SelectedMetal, Mode=OneWayToSource}"
+                  DisplayMemberPath="Name">
+        </ComboBox>
+
+        <!-- Profile text -->
+        <TextBlock Grid.Column="2" 
+                   Grid.Row="3" 
+                   Text="Profile" 
+                   Margin="50,10,50,10" />
+
+        <!-- Profile drop down box -->
+        <ComboBox x:Name="ProfileDropDown"
+                  Grid.Column="3" 
+                  Grid.Row="3"
+                  Margin="10"
+                  SelectedItem="{Binding Path=SelectedProfile, Mode=OneWayToSource}"
+                  DisplayMemberPath="Shape">
+        </ComboBox>
+
+        <!-- Check Box text -->
+        <TextBlock Grid.Column="2" 
+                   Grid.Row="4" 
+                   Text="Stock Gauge?" 
+                   Margin="50,10,50,10" />
+
+        <!-- Check Box -->
+        <CheckBox x:Name="IsStock"
+                  Grid.Column="3"
+                  Grid.Row="4"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  IsChecked="{Binding Path=IsStock, Mode=OneWayToSource}" />
+        <CheckBox/>
+
+        <!-- Stock Gauge text -->
+        <TextBlock Grid.Column="2" 
+                   Grid.Row="5" 
+                   Text="Stock Size (if applicable)" 
+                   Margin="50,10,10,10" />
+
+        <!-- Stock Gauge input box -->
+        <TextBox x:Name="StockSize" 
+                 Grid.Column="3" 
+                 Grid.Row="5"                  
+                 Margin="30,10,30,10" />
+
+        <!-- Metal lenth text -->
+        <TextBlock Grid.Column="2" 
+                   Grid.Row="6" 
+                   Text="Length (milimeters)" 
+                   Margin="50,10,10,10" />
+
+        <!-- Metal lenth input box -->
+        <TextBox x:Name="Lenth" 
+                 Grid.Column="3" 
+                 Grid.Row="6"                  
+                 Margin="30,10,30,10"  />
+
+        <!-- Metal width text -->
+        <TextBlock Grid.Column="2" 
+                   Grid.Row="7" 
+                   Text="Width (milimeters)" 
+                   Margin="50,10,10,10" />
+
+        <!-- Metal width input box -->
+        <TextBox x:Name="Width" 
+                 Grid.Column="3" 
+                 Grid.Row="7"                  
+                 Margin="30,10,30,10"  />
+
+        <!-- Metal thickness text -->
+        <TextBlock Grid.Column="2" 
+                   Grid.Row="8" 
+                   Text="Thickness (milimeters)" 
+                   Margin="50,10,10,10" />
+
+        <!-- Metal thickness input box -->
+        <TextBox x:Name="Thickness" 
+                 Grid.Column="3" 
+                 Grid.Row="8"                  
+                 Margin="30,10,30,10"  />
+
+        <!-- Calculation button -->
+        <Button x:Name="CalculateButton" 
+                Content="Calculate" 
+                Grid.Column="2" 
+                Grid.Row="9" 
+                Margin="30,10,30,10"  />
+
+        <!-- Calculation output box -->
+        <TextBlock x:Name="CalculateText" 
+                 Grid.Column="3" 
+                 Grid.Row="9"
+                 MinWidth="250"
+                 Margin="30,10,30,10" />
+    </Grid>
+</UserControl>

@@ -62,3 +62,7 @@ C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Debug\net6.0-
 C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Debug\net6.0-windows\JewelleryCalculationSuite.csproj.CopyComplete
 C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Debug\net6.0-windows\JewelleryCalculationSuite.genruntimeconfig.cache
 C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Debug\net6.0-windows\ref\JewelleryCalculationSuite.dll
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Debug\net6.0-windows\Views\RingResizerView.g.cs
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Debug\net6.0-windows\Views\RingResizerView.baml
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Debug\net6.0-windows\Views\RollingWireView.g.cs
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Debug\net6.0-windows\Views\RollingWireView.baml
