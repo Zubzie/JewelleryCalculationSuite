@@ -10,15 +10,12 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -31,19 +28,19 @@
         <!-- Side bar colour -->
         <TextBlock Grid.Column="0" 
                    Grid.Row="0" 
-                   Grid.RowSpan="8" 
+                   Grid.RowSpan="9" 
                    Grid.ColumnSpan="2" 
                    Background="LightBlue" />
-        
-        <ContentControl x:Name="ActiveItem" Grid.Row="1" Grid.Column="2" Grid.RowSpan="6" MinWidth="400"/>
+
+        <ContentControl x:Name="ActiveItem" Grid.Row="1" Grid.Column="2" Grid.RowSpan="7" MinWidth="400"/>
 
         <!-- Metal Converter Button -->
         <Button x:Name="LoadPageMetalConverter" 
                 Grid.Row="1" 
                 Grid.Column="1"
                 Margin="0,0,20,0" >
-            Metal Converter </Button>
-        
+            Metal Converter</Button>
+
         <!-- Ring Weight Button -->
         <Button x:Name="LoadPageRingWeight" 
                 Grid.Row="2" 
@@ -64,6 +61,20 @@
                 Grid.Column="1"
                 Margin="0,0,20,0" >
             Rolling Wire</Button>
+
+        <!-- Information Button -->
+        <Button x:Name="LoadPageInformation" 
+                Grid.Row="5" 
+                Grid.Column="1"
+                Margin="0,0,20,0" >
+            Information</Button>
+
+        <!-- Settings Button -->
+        <Button x:Name="LoadPageSettings" 
+                Grid.Row="6" 
+                Grid.Column="1"
+                Margin="0,0,20,0" >
+            Settings</Button>
 
     </Grid>
 </Window>

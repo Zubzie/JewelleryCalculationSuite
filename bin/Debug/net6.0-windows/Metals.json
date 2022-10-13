@@ -1,0 +1,62 @@
+[
+  {
+    "Name": "Fine Silver",
+    "SpecificGravity": 10.64
+  },
+  {
+    "Name": "Bright Silver",
+    "SpecificGravity": 10.5
+  },
+  {
+    "Name": "Sterling Silver",
+    "SpecificGravity": 10.55
+  },
+  {
+    "Name": "Fine Gold",
+    "SpecificGravity": 19.36
+  },
+  {
+    "Name": "18ct Yellow Gold",
+    "SpecificGravity": 16.04
+  },
+  {
+    "Name": "14ct Yellow Gold",
+    "SpecificGravity": 13.56
+  },
+  {
+    "Name": "9ct Yellow Gold",
+    "SpecificGravity": 11.64
+  },
+  {
+    "Name": "18ct White Gold",
+    "SpecificGravity": 16.59
+  },
+  {
+    "Name": "14ct White Gold",
+    "SpecificGravity": 14.02
+  },
+  {
+    "Name": "9ct White Gold",
+    "SpecificGravity": 13.04
+  },
+  {
+    "Name": "18ct Pink Gold",
+    "SpecificGravity": 15.45
+  },
+  {
+    "Name": "14ct Pink Gold",
+    "SpecificGravity": 14
+  },
+  {
+    "Name": "9ct Pink Gold",
+    "SpecificGravity": 11.71
+  },
+  {
+    "Name": "Platinum",
+    "SpecificGravity": 21.24
+  },
+  {
+    "Name": "Wax",
+    "SpecificGravity": 1
+  }
+]

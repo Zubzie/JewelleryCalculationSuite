@@ -46,6 +46,7 @@
 
         <!-- Metal drop down box -->
         <ComboBox x:Name="MetalsDropDown"
+                  ToolTip="Metal type of the ring"
                   Grid.Column="3" 
                   Grid.Row="2"
                   Margin="10"                 
@@ -61,11 +62,12 @@
 
         <!-- Original Ring Size drop down box -->
         <ComboBox x:Name="OrigSizesDropDown"
+                  ToolTip="The original ring size for the ring"
                   Grid.Column="3" 
                   Grid.Row="3"
                   Margin="10"
                   SelectedItem="{Binding Path=OrigSelectedRingSize, Mode=OneWayToSource}"
-                  DisplayMemberPath="RingSizeName">
+                  DisplayMemberPath="Name">
         </ComboBox>
         
         <!-- New Ring Size text -->
@@ -76,11 +78,12 @@
 
         <!-- New Ring Size drop down box -->
         <ComboBox x:Name="NewSizesDropDown"
+                  ToolTip="The new ring size it will be made to"
                   Grid.Column="3" 
                   Grid.Row="4"
                   Margin="10"
                   SelectedItem="{Binding Path=NewSelectedRingSize, Mode=OneWayToSource}"
-                  DisplayMemberPath="RingSizeName">
+                  DisplayMemberPath="Name">
         </ComboBox>
 
         <!-- Ring Profile text -->
@@ -91,6 +94,7 @@
 
         <!-- Ring Profile drop down box -->
         <ComboBox x:Name="ProfileDropDown"
+                  ToolTip="Profile cross section of the ring"
                   Grid.Column="3" 
                   Grid.Row="5"
                   Margin="10"
@@ -101,11 +105,12 @@
         <!-- Metal width text -->
         <TextBlock Grid.Column="2" 
                    Grid.Row="6" 
-                   Text="Width (milimeters)" 
-                   Margin="50,10,10,10" />
+                   Text="Width (mm)" 
+                   Margin="50,10,50,10" />
 
         <!-- Metal width input box -->
         <TextBox x:Name="RingWidth" 
+                 ToolTip="The width of the ring"
                  Grid.Column="3" 
                  Grid.Row="6"                  
                  Margin="30,10,30,10"  />
@@ -113,11 +118,12 @@
         <!-- Metal thickness text -->
         <TextBlock Grid.Column="2" 
                    Grid.Row="7" 
-                   Text="Thickness (milimeters)" 
-                   Margin="50,10,10,10" />
+                   Text="Thickness (mm)" 
+                   Margin="50,10,50,10" />
 
         <!-- Metal thickness input box -->
         <TextBox x:Name="RingThickness" 
+                 ToolTip="The thickness of the ring"
                  Grid.Column="3" 
                  Grid.Row="7"                  
                  Margin="30,10,30,10"  />
@@ -127,13 +133,14 @@
                 Content="Calculate" 
                 Grid.Column="2" 
                 Grid.Row="8" 
+                MinWidth="200"
                 Margin="30,10,30,10"  />
 
         <!-- Calculation output box -->
         <TextBlock x:Name="CalculateText" 
                  Grid.Column="3" 
                  Grid.Row="8"
-                 MinWidth="250"
+                 MinWidth="200"
                  Margin="30,10,30,10" />
     </Grid>
 </UserControl>

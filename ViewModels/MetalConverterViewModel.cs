@@ -1,19 +1,15 @@
 ﻿using Caliburn.Micro;
 using JewelleryCalculationSuite.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace JewelleryCalculationSuite.ViewModels 
+namespace JewelleryCalculationSuite.ViewModels
 {
     public class MetalConverterViewModel : CalcFunctions
     {      
         private BindableCollection<MetalModel> _metals;
         private MetalModel _origSelectedMetal;
         private MetalModel _newSelectedMetal;
-        private string _origMetalWeight = "";
+        private string _metalWeight = "";
 
         public MetalConverterViewModel(BindableCollection<MetalModel> metals)
         {
@@ -51,21 +47,21 @@ namespace JewelleryCalculationSuite.ViewModels
             }
         }
 
-        public string OrigMetalWeight
+        public string MetalWeight
         {
-            get { return _origMetalWeight; }
+            get { return _metalWeight; }
             set
             {
-                _origMetalWeight = value;
-                NotifyOfPropertyChange(() => OrigMetalWeight);
+                _metalWeight = value;
+                NotifyOfPropertyChange(() => MetalWeight);
             }
         }      
 
         public override void CalculateButton()
         {
-            if (OrigSelectedMetal != null && NewSelectedMetal != null && OrigMetalWeight != null && IsDouble(OrigMetalWeight))
+            if (OrigSelectedMetal != null && NewSelectedMetal != null && MetalWeight != null && IsDouble(MetalWeight))
             {
-                double weight = Convert.ToDouble(OrigMetalWeight);
+                double weight = Convert.ToDouble(MetalWeight);
 
                 if (weight > 0)
                 {

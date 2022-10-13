@@ -1,0 +1,215 @@
+﻿<UserControl x:Class="JewelleryCalculationSuite.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:JewelleryCalculationSuite.Views" xmlns:viewmodels="clr-namespace:JewelleryCalculationSuite.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:SettingsViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0"/>
+        </Grid.RowDefinitions>
+
+        <!-- Heading -->
+        <TextBlock Grid.Column="1" 
+                   Grid.Row="1" 
+                   FontSize="32" 
+                   FontWeight="Bold" 
+                   Text="Settings" 
+                   Margin="20,0,20,0" />
+
+        <!-- Radio Button for Metals -->
+        <RadioButton x:Name="RbMetals"
+                     ToolTip="Select if a Metal needs to be altered"
+                     Grid.Column="1"
+                     Grid.Row="2"
+                     FontSize="18"
+                     Content="Metal"
+                     VerticalContentAlignment="Center"
+                     MinWidth="100"
+                     Margin="20,10,10,10"
+                     GroupName="GroupModel" >
+            <RadioButton.RenderTransform>
+                <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+            </RadioButton.RenderTransform>
+        </RadioButton>
+        
+        <!-- Radio Button for Ring Sizes -->
+        <RadioButton x:Name="RbSizes"
+                     ToolTip="Select if a Ring Size needs to be altered"
+                     Grid.Column="2"
+                     Grid.Row="2"
+                     FontSize="18"
+                     Content="Ring Size"
+                     VerticalContentAlignment="Center"
+                     MinWidth="100"
+                     Margin="20,10,10,10"
+                     GroupName="GroupModel" >
+            <RadioButton.RenderTransform>
+                <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+            </RadioButton.RenderTransform>
+        </RadioButton>
+
+        <!-- Text for drop down -->
+        <TextBlock Grid.Column="1" 
+                   Grid.Row="3" 
+                   Text="Metal/Size" 
+                   Margin="20,20,10,10" />
+        
+        <!-- Drop down box for metals -->
+        <ComboBox x:Name="MetalDropDown"
+                  ToolTip="List of either Metals or Ring Sizes (adding will put above selected position)"
+                  Grid.Column="2" 
+                  Grid.Row="3"
+                  Grid.ColumnSpan="2"
+                  Margin="10,20,10,10"
+                  IsEnabled="{Binding RbMetals}"
+                  SelectedItem="{Binding Path=SelectedMetal, Mode=OneWayToSource}"
+                  DisplayMemberPath="Name">
+        </ComboBox>
+
+        <!-- Drop down box for ring sizes -->
+        <ComboBox x:Name="RingSizeDropDown"
+                  ToolTip="List of either Metals or Ring Sizes (adding will put above selected position)"
+                  Grid.Column="2" 
+                  Grid.Row="3"
+                  Grid.ColumnSpan="2"
+                  Margin="10,20,10,10"
+                  IsEnabled="{Binding RbSizes}"
+                  Visibility="{Binding RbSizesIsVisible}"
+                  SelectedItem="{Binding Path=SelectedRingSize, Mode=OneWayToSource}"
+                  DisplayMemberPath="Name">
+        </ComboBox>
+
+        <!-- Radio Button for Modify -->
+        <RadioButton x:Name="RbModify"
+                     ToolTip="Modify a Metal or Ring Size"
+                     Grid.Column="1"
+                     Grid.Row="4"
+                     FontSize="18"
+                     Content="Modify"
+                     VerticalContentAlignment="Center"
+                     MinWidth="100"
+                     Margin="20,10,10,10"
+                     GroupName="GroupSettings" >
+            <RadioButton.RenderTransform>
+                <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+            </RadioButton.RenderTransform>
+        </RadioButton>
+
+        <!-- Radio Button for Add -->
+        <RadioButton x:Name="RbAdd"
+                     ToolTip="Add a Metal or Ring Size"
+                     Grid.Column="2"
+                     Grid.Row="4"
+                     FontSize="18"
+                     Content="Add"
+                     VerticalContentAlignment="Center"
+                     MinWidth="100"
+                     Margin="20,10,10,10"
+                     GroupName="GroupSettings" >
+            <RadioButton.RenderTransform>
+                <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+            </RadioButton.RenderTransform>
+        </RadioButton>
+
+        <!-- Radio Button for Remove -->
+        <RadioButton x:Name="RbRemove"
+                     ToolTip="Remove a Metal or Ring Size"
+                     Grid.Column="3"
+                     Grid.Row="4"
+                     FontSize="18"
+                     Content="Remove"
+                     VerticalContentAlignment="Center"
+                     MinWidth="100"
+                     Margin="20,10,10,10"
+                     GroupName="GroupSettings" >
+            <RadioButton.RenderTransform>
+                <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+            </RadioButton.RenderTransform>
+        </RadioButton>
+
+        <!-- Text for first variable -->
+        <TextBlock x:Name="Variable1Name" 
+                   Grid.Column="1" 
+                   Grid.Row="5" 
+                   Text="N/A" 
+                   Margin="20,20,10,10" />
+
+        <!-- Input box for first variable -->
+        <TextBox x:Name="Variable1" 
+                 Grid.Column="2" 
+                 Grid.Row="5"    
+                 Grid.ColumnSpan="2"
+                 Margin="30,10,30,10" />
+
+        <!-- Text for second variable -->
+        <TextBlock x:Name="Variable2Name" 
+                   Grid.Column="1" 
+                   Grid.Row="6" 
+                   Text="N/A" 
+                   Margin="20,20,10,10" />
+
+        <!-- Input box for second variable -->
+        <TextBox x:Name="Variable2" 
+                 Grid.Column="2" 
+                 Grid.Row="6"    
+                 Grid.ColumnSpan="2"
+                 Margin="30,10,30,10" />
+
+        <!-- Text for third variable -->
+        <TextBlock x:Name="Variable3Name" 
+                   Grid.Column="1" 
+                   Grid.Row="7" 
+                   Text="N/A" 
+                   Margin="20,20,10,10" />
+
+        <!-- Input box for third variable -->
+        <TextBox x:Name="Variable3" 
+                 Grid.Column="2" 
+                 Grid.Row="7"    
+                 Grid.ColumnSpan="2"
+                 IsEnabled="{Binding RbSizes}"
+                 Margin="30,10,30,10" />
+
+        <!-- Default list button -->
+        <Button x:Name="AlterButton" 
+                ToolTip="Will make changes to selected item"
+                Content="Make Changes" 
+                Grid.Column="1" 
+                Grid.Row="8"
+                Margin="30,10,30,10" />
+
+        <!-- Default list button -->
+        <Button x:Name="DefaultButton" 
+                ToolTip="Will reset selected list to default"
+                Content="Reset list to Defaults" 
+                Grid.Column="2" 
+                Grid.Row="8"
+                Grid.ColumnSpan="2"
+                Margin="50,10,50,10" />
+
+
+    </Grid>
+</UserControl>

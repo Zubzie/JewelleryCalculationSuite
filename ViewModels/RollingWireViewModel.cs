@@ -1,51 +1,43 @@
 ﻿using Caliburn.Micro;
 using JewelleryCalculationSuite.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JewelleryCalculationSuite.ViewModels
 {
     public class RollingWireViewModel : CalcFunctions
     {
-        private BindableCollection<MetalModel> _metals;
         private BindableCollection<ProfileModel> _profiles;
-        private MetalModel _selectedMetal;
         private ProfileModel _selectedProfile;
         private string _width = "";
         private string _thickness = "";
         private string _length = "";
         private string _stockSize = "";
-        private bool _isStock = false;
+        private bool _isStock;
 
-        public RollingWireViewModel(BindableCollection<MetalModel> metals, BindableCollection<ProfileModel> profiles)
-        {
-            _metals = metals;
-            _profiles = profiles;
-            //_profiles.RemoveAt(1);
-            //_profiles.RemoveAt(3);
-        }
-
-        public BindableCollection<MetalModel> MetalsDropDown
-        {
-            get { return _metals; }
-            set { _metals = value; }
-        }
-
-        public MetalModel SelectedMetal
-        {
-            get { return _selectedMetal; }
+        public bool IsStock 
+        { 
+            get { return _isStock; }
             set
             {
-                _selectedMetal = value;
-                NotifyOfPropertyChange(() => SelectedMetal);
+                _isStock = value;
+                NotifyOfPropertyChange(() => IsStock);
             }
         }
 
-        public BindableCollection<ProfileModel> ProfileDropDown
+        public RollingWireViewModel(BindableCollection<ProfileModel> profiles)
         {
+            for (int i = 0; i < profiles.Count; i++)
+            {
+                if (profiles[i].Shape == "Half-Round" || profiles[i].Shape == "Rectangle")
+                {
+                    profiles.RemoveAt(i);
+                }
+            }
+            _profiles = profiles;        
+        }
+
+        public BindableCollection<ProfileModel> ProfilesDropDown
+        { 
             get { return _profiles; }
             set { _profiles = value; }
         }
@@ -60,68 +52,59 @@ namespace JewelleryCalculationSuite.ViewModels
             }
         }
 
-        public string Width
+        public string WidthInput
         {
             get { return _width; }
             set
             {
                 _width = value;
-                NotifyOfPropertyChange(() => Width);
+                NotifyOfPropertyChange(() => WidthInput);
             }
         }
 
-        public string Thickness
+        public string ThicknessInput
         {
             get { return _thickness; }
             set
             {
                 _thickness = value;
-                NotifyOfPropertyChange(() => Thickness);
+                NotifyOfPropertyChange(() => ThicknessInput);
             }
         }
-        public string Length
+
+        public string LengthInput
         {
             get { return _length; }
             set
             {
                 _length = value;
-                NotifyOfPropertyChange(() => Length);
+                NotifyOfPropertyChange(() => LengthInput);
             }
         }
 
-        public string StockSize
+        public string StockSizeInput
         {
             get { return _stockSize; }
             set
             {
                 _stockSize = value;
-                NotifyOfPropertyChange(() => StockSize);
-            }
-        }
-
-        public bool IsStock
-        {
-            get { return _isStock; }
-            set
-            {
-                _isStock = value;
-                NotifyOfPropertyChange(() => IsStock);
+                NotifyOfPropertyChange(() => StockSizeInput);
             }
         }
 
         public override void CalculateButton()
         {
-            if (SelectedMetal != null && SelectedProfile != null && IsDouble(Width) && IsDouble(Length))
+            if (SelectedProfile != null && IsDouble(WidthInput) && IsDouble(LengthInput))
             {
-                double length = Convert.ToDouble(Length);
-                double width = Convert.ToDouble(Width);
-                double thickness = Convert.ToDouble(Width);
+                double length = Convert.ToDouble(LengthInput);
+                double width = Convert.ToDouble(WidthInput);
+                double thickness = Convert.ToDouble(WidthInput);
                 double stockSize = 1.0;
 
                 if (IsStock)
                 {
-                    if (IsDouble(Thickness)) { thickness = Convert.ToDouble(Thickness); }
-                    if (IsDouble(StockSize)) { stockSize = Convert.ToDouble(StockSize); }
+                    if (IsDouble(ThicknessInput)) { thickness = Convert.ToDouble(ThicknessInput); }
+                    if (IsDouble(StockSizeInput)) { stockSize = Convert.ToDouble(StockSizeInput); }
                 }
 
                 if (width > 0 && thickness > 0 && length > 0 && stockSize > 0)
@@ -135,18 +118,18 @@ namespace JewelleryCalculationSuite.ViewModels
                         if (IsStock)
                         {
                             stockSize = (4 * Math.Pow(side, 2) * length) / (pi * Math.Pow(stockSize, 2));
-                            CalculateText = "Width: " + diameter.ToString("F3") + "mm" + " Length: " + length.ToString("F3") + "mm" + " Stock Length: " + stockSize.ToString("F3") + "mm";
+                            CalculateText = "Side: " + diameter.ToString("F2") + "mm" + "\nStock Length: " + stockSize.ToString("F2") + "mm";
                         }
-                        else { CalculateText = "Width: " + side.ToString("F3") + "mm" + " Length: " + length.ToString("F3") + "mm"; }                       
+                        else { CalculateText = "Side: " + side.ToString("F2") + "mm" + "\nLength: " + length.ToString("F2") + "mm"; }
                     }
                     else
                     {
                         if (IsStock)
                         {
                             stockSize = (Math.Pow(side, 2) * length) / Math.Pow(stockSize, 2);
-                            CalculateText = "Width: " + side.ToString("F3") + "mm" + " Length: " + length.ToString("F3") + "mm" + " Stock Length: " + stockSize.ToString("F3") + "mm";
+                            CalculateText = "Side: " + side.ToString("F2") + "mm" + "\nStock Length: " + stockSize.ToString("F2") + "mm";
                         }
-                        else { CalculateText = "Width: " + side.ToString("F3") + "mm" + " Length: " + length.ToString("F3") + "mm"; }                       
+                        else { CalculateText = "Side: " + side.ToString("F2") + "mm" + "\nLength: " + length.ToString("F2") + "mm"; }
                     }
                 }
                 else { CalculateText = ("Invalid Input"); }

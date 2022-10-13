@@ -1,10 +1,8 @@
-﻿using Caliburn.Micro;
+﻿using System.Text.Json;
+using Caliburn.Micro;
 using JewelleryCalculationSuite.Models;
+using System.IO;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JewelleryCalculationSuite.ViewModels
 {
@@ -13,12 +11,32 @@ namespace JewelleryCalculationSuite.ViewModels
         private BindableCollection<MetalModel> _metals = new();
         private BindableCollection<RingSizeModel> _ringSizes = new();
         private BindableCollection<ProfileModel> _profiles = new();
+        string ?_jsonString;
 
         public ShellViewModel()
         {
-            AddDefaultMetals();
-            AddDefaultSizes();
-            AddDefaultProfiles();
+            ActivateItemAsync(new InformationViewModel());
+            
+            try
+            {
+                _jsonString = File.ReadAllText(@"Metals.json");
+                _metals = JsonSerializer.Deserialize<BindableCollection<MetalModel>>(_jsonString);
+            }
+            catch(System.IO.FileNotFoundException) { AddDefaultMetals(); }
+
+            try
+            {
+                _jsonString = File.ReadAllText(@"RingSizes.json");
+                _ringSizes = JsonSerializer.Deserialize<BindableCollection<RingSizeModel>>(_jsonString);
+            }
+            catch (System.IO.FileNotFoundException) { AddDefaultSizes(); }
+
+            try
+            {
+                _jsonString = File.ReadAllText(@"Profiles.json");
+                _profiles = JsonSerializer.Deserialize<BindableCollection<ProfileModel>>(_jsonString);
+            }
+            catch (System.IO.FileNotFoundException) { AddDefaultProfiles(); }
         }
 
         public void LoadPageMetalConverter()
@@ -38,11 +56,21 @@ namespace JewelleryCalculationSuite.ViewModels
 
         public void LoadPageRollingWire()
         {
-            ActivateItemAsync(new RollingWireViewModel(_metals, _profiles));
+           ActivateItemAsync(new RollingWireViewModel(_profiles));
+        }
+        public void LoadPageInformation()
+        {
+            ActivateItemAsync(new InformationViewModel());
+        }
+
+        public void LoadPageSettings()
+        {
+            ActivateItemAsync(new SettingsViewModel(_metals, _ringSizes));
         }
 
         public void AddDefaultMetals()
         {
+            _metals.Clear();
             _metals.Add(new MetalModel("Fine Silver", 10.64));
             _metals.Add(new MetalModel("Bright Silver", 10.50));
             _metals.Add(new MetalModel("Sterling Silver", 10.55));
@@ -58,10 +86,14 @@ namespace JewelleryCalculationSuite.ViewModels
             _metals.Add(new MetalModel("9ct Pink Gold", 11.71));
             _metals.Add(new MetalModel("Platinum", 21.24));
             _metals.Add(new MetalModel("Wax", 1.0));
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            _jsonString = JsonSerializer.Serialize(_metals, options);
+            File.WriteAllText(@"Metals.json", _jsonString);
         }
 
         private void AddDefaultSizes()
         {
+            _ringSizes.Clear();
             _ringSizes.Add(new RingSizeModel("A", 0.5, 12.04));
             _ringSizes.Add(new RingSizeModel("B", 1.0, 12.45));
             _ringSizes.Add(new RingSizeModel("C", 1.5, 12.85));
@@ -88,14 +120,21 @@ namespace JewelleryCalculationSuite.ViewModels
             _ringSizes.Add(new RingSizeModel("X", 12.0, 21.18));
             _ringSizes.Add(new RingSizeModel("Y", 12.5, 21.59));
             _ringSizes.Add(new RingSizeModel("Z", 13.0, 21.79));
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            _jsonString = JsonSerializer.Serialize(_ringSizes, options);
+            File.WriteAllText(@"RingSizes.json", _jsonString);
         }
 
         public void AddDefaultProfiles()
         {
+            _profiles.Clear();
             _profiles.Add(new ProfileModel("Round"));
             _profiles.Add(new ProfileModel("Half-Round"));
             _profiles.Add(new ProfileModel("Square"));
             _profiles.Add(new ProfileModel("Rectangle"));
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            _jsonString = JsonSerializer.Serialize(_profiles, options);
+            File.WriteAllText(@"Profiles.json", _jsonString);
         }
     }
 }

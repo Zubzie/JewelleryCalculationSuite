@@ -28,6 +28,7 @@
         
         <!-- Heading -->
         <TextBlock Text="Metal Converter" 
+                   ToolTip="Original metal type"
                    Grid.Column="2" 
                    Grid.Row="1" 
                    FontSize="32" 
@@ -58,6 +59,7 @@
 
         <!-- New metal drop down box -->
         <ComboBox x:Name="NewMetalsDropDown"
+                  ToolTip="The metal type the metal will be converted to"
                   Grid.Column="3" 
                   Grid.Row="3"
                   Margin="10"
@@ -69,10 +71,11 @@
         <TextBlock Grid.Column="2" 
                    Grid.Row="4" 
                    Text="Weight (grams)" 
-                   Margin="50,10,10,10" />
+                   Margin="50,10,50,10" />
 
         <!-- Metal weight input box -->
-        <TextBox x:Name="OrigMetalWeight" 
+        <TextBox x:Name="MetalWeight" 
+                 ToolTip="The weight of the original metal"
                  Grid.Column="3" 
                  Grid.Row="4"                 
                  Margin="30,10,30,10"  />
@@ -82,6 +85,7 @@
                 Content="Calculate" 
                 Grid.Column="2" 
                 Grid.Row="5" 
+                MinWidth="200"
                 Margin="30,10,30,10"  />
 
         <!-- Calculation output box -->
