@@ -2,7 +2,6 @@
 using Caliburn.Micro;
 using JewelleryCalculationSuite.Models;
 using System.IO;
-using System;
 
 namespace JewelleryCalculationSuite.ViewModels
 {
@@ -22,21 +21,21 @@ namespace JewelleryCalculationSuite.ViewModels
                 _jsonString = File.ReadAllText(@"Metals.json");
                 _metals = JsonSerializer.Deserialize<BindableCollection<MetalModel>>(_jsonString);
             }
-            catch(System.IO.FileNotFoundException) { AddDefaultMetals(); }
+            catch(System.IO.FileNotFoundException) { MakeDefaultMetals(); }
 
             try
             {
                 _jsonString = File.ReadAllText(@"RingSizes.json");
                 _ringSizes = JsonSerializer.Deserialize<BindableCollection<RingSizeModel>>(_jsonString);
             }
-            catch (System.IO.FileNotFoundException) { AddDefaultSizes(); }
+            catch (System.IO.FileNotFoundException) { MakeDefaultSizes(); }
 
             try
             {
                 _jsonString = File.ReadAllText(@"Profiles.json");
                 _profiles = JsonSerializer.Deserialize<BindableCollection<ProfileModel>>(_jsonString);
             }
-            catch (System.IO.FileNotFoundException) { AddDefaultProfiles(); }
+            catch (System.IO.FileNotFoundException) { MakeDefaultProfiles(); }
         }
 
         public void LoadPageMetalConverter()
@@ -68,9 +67,8 @@ namespace JewelleryCalculationSuite.ViewModels
             ActivateItemAsync(new SettingsViewModel(_metals, _ringSizes));
         }
 
-        public void AddDefaultMetals()
+        public void MakeDefaultMetals()
         {
-            _metals.Clear();
             _metals.Add(new MetalModel("Fine Silver", 10.64));
             _metals.Add(new MetalModel("Bright Silver", 10.50));
             _metals.Add(new MetalModel("Sterling Silver", 10.55));
@@ -91,9 +89,8 @@ namespace JewelleryCalculationSuite.ViewModels
             File.WriteAllText(@"Metals.json", _jsonString);
         }
 
-        private void AddDefaultSizes()
+        public void MakeDefaultSizes()
         {
-            _ringSizes.Clear();
             _ringSizes.Add(new RingSizeModel("A", 0.5, 12.04));
             _ringSizes.Add(new RingSizeModel("B", 1.0, 12.45));
             _ringSizes.Add(new RingSizeModel("C", 1.5, 12.85));
@@ -125,9 +122,8 @@ namespace JewelleryCalculationSuite.ViewModels
             File.WriteAllText(@"RingSizes.json", _jsonString);
         }
 
-        public void AddDefaultProfiles()
+        public void MakeDefaultProfiles()
         {
-            _profiles.Clear();
             _profiles.Add(new ProfileModel("Round"));
             _profiles.Add(new ProfileModel("Half-Round"));
             _profiles.Add(new ProfileModel("Square"));

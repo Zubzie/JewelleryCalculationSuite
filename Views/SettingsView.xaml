@@ -39,6 +39,15 @@
                    Text="Settings" 
                    Margin="20,0,20,0" />
 
+        <!-- Revert list to default button -->
+        <Button x:Name="RevertToDefaultButton" 
+                ToolTip="Will reset selected list to default"
+                Content="Revert To Defaults" 
+                Grid.Column="2" 
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Margin="50,10,50,10" />
+
         <!-- Radio Button for Metals -->
         <RadioButton x:Name="RbMetals"
                      ToolTip="Select if a Metal needs to be altered"
@@ -158,10 +167,11 @@
                    Margin="20,20,10,10" />
 
         <!-- Input box for first variable -->
-        <TextBox x:Name="Variable1" 
+        <TextBox x:Name="Variable1Input" 
                  Grid.Column="2" 
                  Grid.Row="5"    
                  Grid.ColumnSpan="2"
+                 IsEnabled="{Binding ActivateInput1}"
                  Margin="30,10,30,10" />
 
         <!-- Text for second variable -->
@@ -172,10 +182,11 @@
                    Margin="20,20,10,10" />
 
         <!-- Input box for second variable -->
-        <TextBox x:Name="Variable2" 
+        <TextBox x:Name="Variable2Input" 
                  Grid.Column="2" 
                  Grid.Row="6"    
                  Grid.ColumnSpan="2"
+                 IsEnabled="{Binding ActivateInput2}"
                  Margin="30,10,30,10" />
 
         <!-- Text for third variable -->
@@ -186,30 +197,28 @@
                    Margin="20,20,10,10" />
 
         <!-- Input box for third variable -->
-        <TextBox x:Name="Variable3" 
+        <TextBox x:Name="Variable3Input" 
                  Grid.Column="2" 
                  Grid.Row="7"    
                  Grid.ColumnSpan="2"
-                 IsEnabled="{Binding RbSizes}"
+                 IsEnabled="{Binding ActivateInput3}"
                  Margin="30,10,30,10" />
 
-        <!-- Default list button -->
+        <!-- Alter list item button -->
         <Button x:Name="AlterButton" 
                 ToolTip="Will make changes to selected item"
                 Content="Make Changes" 
                 Grid.Column="1" 
-                Grid.Row="8"
+                Grid.Row="8"   
                 Margin="30,10,30,10" />
 
-        <!-- Default list button -->
-        <Button x:Name="DefaultButton" 
-                ToolTip="Will reset selected list to default"
-                Content="Reset list to Defaults" 
-                Grid.Column="2" 
-                Grid.Row="8"
-                Grid.ColumnSpan="2"
-                Margin="50,10,50,10" />
-
-
+        <!-- Invalid input text -->
+        <TextBlock x:Name="InvalidInputText" 
+                   Grid.Column="2" 
+                   Grid.Row="8" 
+                   Grid.ColumnSpan="2"
+                   Text="" 
+                   Margin="30,10,30,10" />
+        
     </Grid>
 </UserControl>
