@@ -11,13 +11,11 @@
             <ColumnDefinition Width="0"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="0"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -32,111 +30,109 @@
 
         <!-- Heading -->
         <TextBlock Text="Rolling Wire" 
-                   Grid.Column="2" 
+                   Grid.Column="1" 
                    Grid.Row="1" 
                    FontSize="32" 
                    FontWeight="Bold" 
-                   Grid.ColumnSpan="3" 
+                   Grid.ColumnSpan="2" 
                    Margin="20,0,0,20" />
 
         <!-- Profile text -->
-        <TextBlock Grid.Column="2" 
+        <TextBlock Grid.Column="1" 
                    Grid.Row="3" 
                    Text="Wire Profile" 
-                   Margin="50,10,50,10" />
+                   Margin="50,10,0,10" />
 
         <!-- Profile drop down box -->
         <ComboBox x:Name="ProfilesDropDown"
                   ToolTip="Profile cross section of the initial wire"
-                  Grid.Column="3" 
+                  Grid.Column="2" 
                   Grid.Row="3"
                   Margin="10"                 
                   SelectedItem="{Binding Path=SelectedProfile, Mode=OneWayToSource}"
                   DisplayMemberPath="Shape">
         </ComboBox>
 
-        <!-- Check Box text -->
-        <TextBlock Grid.Column="2" 
-                   Grid.Row="4" 
-                   Text="Stock Gauge" 
-                   Margin="50,10,50,10" />
-
         <!-- Check Box -->
         <CheckBox IsChecked="{Binding IsStock}"
-                  Grid.Column="3"
+                  Grid.Column="1"
                   Grid.Row="4"
                   ToolTip="Is stock gauge wire going to be used?"
-                  HorizontalAlignment="Center"
+                  HorizontalAlignment="Right"
                   VerticalAlignment="Center" >
+            <CheckBox.RenderTransform>
+                <ScaleTransform ScaleX="1.3" ScaleY="1.3"/>
+            </CheckBox.RenderTransform>
         </CheckBox> 
 
         <!-- Stock Gauge text -->
-        <TextBlock Grid.Column="2" 
-                   Grid.Row="5" 
-                   Text="Stock Size (mm)"
-                   Margin="50,10,50,10" />
+        <TextBlock Grid.Column="1" 
+                   Grid.Row="4" 
+                   Text="Stock Gauge (mm)"
+                   Margin="50,10,20,10" />
 
         <!-- Stock Gauge input box -->
         <TextBox x:Name="StockSizeInput" 
                  ToolTip="The width of the stock wire being used"
-                 Grid.Column="3" 
-                 Grid.Row="5"       
+                 Grid.Column="2" 
+                 Grid.Row="4"    
+                 MinWidth="175" 
                  IsEnabled="{Binding IsStock}"
                  Margin="30,10,30,10" />
 
         <!-- Metal lenth text -->
-        <TextBlock Grid.Column="2" 
-                   Grid.Row="6" 
+        <TextBlock Grid.Column="1" 
+                   Grid.Row="5" 
                    Text="Length (mm)"                    
-                   Margin="50,10,50,10" />
+                   Margin="50,10,0,10" />
 
         <!-- Metal lenth input box -->
         <TextBox x:Name="LengthInput" 
                  ToolTip="The length of the wire required"
-                 Grid.Column="3" 
-                 Grid.Row="6"                  
+                 Grid.Column="2" 
+                 Grid.Row="5"                  
                  Margin="30,10,30,10"  />
 
         <!-- Metal width text -->
-        <TextBlock Grid.Column="2" 
-                   Grid.Row="7" 
+        <TextBlock Grid.Column="1" 
+                   Grid.Row="6" 
                    Text="Width (mm)"                    
-                   Margin="50,10,50,10" />
+                   Margin="50,10,0,10" />
 
         <!-- Metal width input box -->
         <TextBox x:Name="WidthInput" 
                  ToolTip="The width of the wire required"
-                 Grid.Column="3" 
-                 Grid.Row="7"                       
+                 Grid.Column="2" 
+                 Grid.Row="6"                       
                  Margin="30,10,30,10"  />
 
         <!-- Metal thickness text -->
-        <TextBlock Grid.Column="2" 
-                   Grid.Row="8" 
+        <TextBlock Grid.Column="1" 
+                   Grid.Row="7" 
                    Text="Thickness (mm)"                   
-                   Margin="50,10,50,10" />
+                   Margin="50,10,0,10" />
 
         <!-- Metal thickness input box -->
         <TextBox x:Name="ThicknessInput" 
                  ToolTip="The thickness of the wire required"
-                 Grid.Column="3" 
-                 Grid.Row="8"                         
+                 Grid.Column="2" 
+                 Grid.Row="7"                         
                  Margin="30,10,30,10"  />
 
         <!-- Calculation button -->
         <Button x:Name="CalculateButton" 
                 Content="Calculate" 
-                Grid.Column="2" 
-                Grid.Row="9" 
-                MinWidth="200"
-                Margin="30,10,30,10"  />
+                Grid.Column="1" 
+                Grid.Row="8" 
+                MinWidth="150"
+                Margin="75,10,75,10"  />
 
         <!-- Calculation output box -->
         <TextBlock x:Name="CalculateText" 
-                 Grid.Column="3" 
-                 Grid.Row="9"                
-                 Grid.RowSpan="2" 
-                 MinWidth="200"                 
+                 Grid.Column="2" 
+                 Grid.Row="8"   
+                 Grid.ColumnSpan="2"
+                 Grid.RowSpan="2"                 
                  Margin="30,10,30,10" />
     </Grid>
 </UserControl>

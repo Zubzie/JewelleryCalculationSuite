@@ -8,18 +8,24 @@ namespace JewelleryCalculationSuite.ViewModels
     {
         private BindableCollection<MetalModel> _metals;
         private BindableCollection<RingSizeModel> _ringSizes;
-        private BindableCollection<ProfileModel> _profiles;
-        private MetalModel _selectedMetal;
-        private RingSizeModel _selectedRingSize;
-        private ProfileModel _selectedProfile;
-        private string _ringWidth = "";
-        private string _ringThickness = "";        
+        private BindableCollection<ProfileModel> _profiles = new();
 
-        public RingWeightViewModel(BindableCollection<MetalModel> metals, BindableCollection<RingSizeModel> ringSizes, BindableCollection<ProfileModel> profiles)
+        private MetalModel? _selectedMetal;
+        private RingSizeModel? _selectedRingSize;
+        private ProfileModel? _selectedProfile;
+
+        private string _ringWidth = "";
+        private string _ringThickness = "";
+        private bool _isThicknessEnabled;
+
+        public RingWeightViewModel(BindableCollection<MetalModel> metals, BindableCollection<RingSizeModel> ringSizes)
         {
             _metals = metals;
             _ringSizes = ringSizes;
-            _profiles = profiles;
+            _profiles.Add(new ProfileModel("Round"));
+            _profiles.Add(new ProfileModel("Half-Round"));
+            _profiles.Add(new ProfileModel("Square"));
+            _profiles.Add(new ProfileModel("Rectangle"));
         }
 
         public BindableCollection<MetalModel> MetalsDropDown
@@ -31,11 +37,7 @@ namespace JewelleryCalculationSuite.ViewModels
         public MetalModel SelectedMetal
         {
             get { return _selectedMetal; }
-            set
-            {
-                _selectedMetal = value;
-                NotifyOfPropertyChange(() => SelectedMetal);
-            }
+            set { _selectedMetal = value; NotifyOfPropertyChange(() => SelectedMetal); }
         }
 
         public BindableCollection<RingSizeModel> SizesDropDown
@@ -47,11 +49,7 @@ namespace JewelleryCalculationSuite.ViewModels
         public RingSizeModel SelectedRingSize
         {
             get { return _selectedRingSize; }
-            set
-            {
-                _selectedRingSize = value;
-                NotifyOfPropertyChange(() => SelectedRingSize);
-            }
+            set { _selectedRingSize = value; NotifyOfPropertyChange(() => SelectedRingSize); }
         }
         public BindableCollection<ProfileModel> ProfileDropDown
         {
@@ -62,56 +60,62 @@ namespace JewelleryCalculationSuite.ViewModels
         public ProfileModel SelectedProfile
         {
             get { return _selectedProfile; }
-            set
-            {
-                _selectedProfile = value;
-                NotifyOfPropertyChange(() => SelectedProfile);
+            set 
+            { 
+                _selectedProfile = value; NotifyOfPropertyChange(() => SelectedProfile); 
+                if (_selectedProfile != null && (_selectedProfile.Shape == "Round" || _selectedProfile.Shape == "Square"))
+                {
+                    _isThicknessEnabled = false;
+                    NotifyOfPropertyChange(() => IsThicknessEnabled);
+                } 
+                else { _isThicknessEnabled = true; NotifyOfPropertyChange(() => IsThicknessEnabled); }              
             }
         }
 
         public string RingWidth
         {
             get { return _ringWidth; }
-            set
-            {
-                _ringWidth = value;
-                NotifyOfPropertyChange(() => RingWidth);
-            }
+            set { _ringWidth = value; NotifyOfPropertyChange(() => RingWidth); }
         }
 
         public string RingThickness
         {
             get { return _ringThickness; }
-            set
-            {
-                _ringThickness = value;
-                NotifyOfPropertyChange(() => RingThickness);
-            }
+            set { _ringThickness = value; NotifyOfPropertyChange(() => RingThickness); }
+        }
+
+        public bool IsThicknessEnabled
+        {
+            get { return _isThicknessEnabled; }
+            set { _isThicknessEnabled = value; NotifyOfPropertyChange(() => IsThicknessEnabled); }
         }
 
         public override void CalculateButton()
         {            
             if (SelectedMetal != null && SelectedRingSize != null && SelectedProfile != null && IsDouble(RingWidth))
             {
-                double weight;                
+                double weight = 0.0;                
                 double length = SelectedRingSize.Diameter;
                 double width = Convert.ToDouble(RingWidth);
-                double thickness = Convert.ToDouble(RingWidth);
 
-                if (SelectedProfile.Shape == "Half-Round" || SelectedProfile.Shape == "Rectangle")
+                if ((SelectedProfile.Shape == "Half-Round" || SelectedProfile.Shape == "Rectangle") && IsDouble(RingThickness))
                 {
-                    if (IsDouble(RingThickness)) { thickness = Convert.ToDouble(RingThickness); }                  
-                }                             
-
-                if (width > 0 && thickness > 0)
+                    double thickness = Convert.ToDouble(RingThickness);
+                    if (width > 0 && thickness > 0)
+                    {
+                        if (SelectedProfile.Shape == "Half-Round") { weight = ((pi * Math.Pow(width, 2)) * (length + width + thickness)) * SelectedMetal.SpecificGravity / 1000; }
+                        if (SelectedProfile.Shape == "Rectangle") { weight = (length + width + thickness) * pi * width * thickness * SelectedMetal.SpecificGravity / 1000; }
+                        CalculateText = weight.ToString("F3") + "g";
+                    }
+                    else { CalculateText = ("Invalid Input"); }
+                }               
+                else if ((SelectedProfile.Shape == "Round" || SelectedProfile.Shape == "Square") && width > 0)
                 {
                     if (SelectedProfile.Shape == "Round") { weight = (pi * Math.Pow(width, 2) * (length + width)) * SelectedMetal.SpecificGravity / 1000; }
-                    else if (SelectedProfile.Shape == "Half-Round") { weight = ((pi * Math.Pow(width, 2)) * (length + width + thickness)) * SelectedMetal.SpecificGravity / 1000; }
-                    else if (SelectedProfile.Shape == "Square") { weight = (length + width + width) * pi * width * thickness * SelectedMetal.SpecificGravity / 1000; }
-                    else weight = (length + width + thickness) * pi * width * thickness * SelectedMetal.SpecificGravity / 1000;
+                    if (SelectedProfile.Shape == "Square") { weight = (length + width + width) * pi * width * width * SelectedMetal.SpecificGravity / 1000; }
                     CalculateText = weight.ToString("F3") + "g";
                 }
-                else { CalculateText = ("Invalid Input"); }
+                else { CalculateText = ("Invalid Input"); }               
             }
             else { CalculateText = ("Invalid Input"); }
         }

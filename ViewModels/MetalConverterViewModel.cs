@@ -7,8 +7,8 @@ namespace JewelleryCalculationSuite.ViewModels
     public class MetalConverterViewModel : CalcFunctions
     {      
         private BindableCollection<MetalModel> _metals;
-        private MetalModel _origSelectedMetal;
-        private MetalModel _newSelectedMetal;
+        private MetalModel? _origSelectedMetal;
+        private MetalModel? _newSelectedMetal;
         private string _metalWeight = "";
 
         public MetalConverterViewModel(BindableCollection<MetalModel> metals)
@@ -24,11 +24,7 @@ namespace JewelleryCalculationSuite.ViewModels
         public MetalModel OrigSelectedMetal
         {
             get { return _origSelectedMetal; }
-            set
-            {
-                _origSelectedMetal = value;
-                NotifyOfPropertyChange(() => OrigSelectedMetal);
-            }
+            set {  _origSelectedMetal = value; NotifyOfPropertyChange(() => OrigSelectedMetal); }
         }
 
         public BindableCollection<MetalModel> NewMetalsDropDown
@@ -40,21 +36,13 @@ namespace JewelleryCalculationSuite.ViewModels
         public MetalModel NewSelectedMetal
         {
             get { return _newSelectedMetal; }
-            set
-            {
-                _newSelectedMetal = value;
-                NotifyOfPropertyChange(() => NewSelectedMetal);
-            }
+            set { _newSelectedMetal = value; NotifyOfPropertyChange(() => NewSelectedMetal); }
         }
 
         public string MetalWeight
         {
             get { return _metalWeight; }
-            set
-            {
-                _metalWeight = value;
-                NotifyOfPropertyChange(() => MetalWeight);
-            }
+            set { _metalWeight = value; NotifyOfPropertyChange(() => MetalWeight); }
         }      
 
         public override void CalculateButton()

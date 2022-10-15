@@ -46,7 +46,7 @@
                 Grid.Column="2" 
                 Grid.Row="1"
                 Grid.ColumnSpan="2"
-                Margin="50,10,50,10" />
+                Margin="20,10,20,10" />
 
         <!-- Radio Button for Metals -->
         <RadioButton x:Name="RbMetals"
@@ -57,7 +57,7 @@
                      Content="Metal"
                      VerticalContentAlignment="Center"
                      MinWidth="100"
-                     Margin="20,10,10,10"
+                     Margin="50,10,0,10"
                      GroupName="GroupModel" >
             <RadioButton.RenderTransform>
                 <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
@@ -73,7 +73,7 @@
                      Content="Ring Size"
                      VerticalContentAlignment="Center"
                      MinWidth="100"
-                     Margin="20,10,10,10"
+                     Margin="20,10,0,10"
                      GroupName="GroupModel" >
             <RadioButton.RenderTransform>
                 <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
@@ -84,7 +84,7 @@
         <TextBlock Grid.Column="1" 
                    Grid.Row="3" 
                    Text="Metal/Size" 
-                   Margin="20,20,10,10" />
+                   Margin="50,20,50,10" />
         
         <!-- Drop down box for metals -->
         <ComboBox x:Name="MetalDropDown"
@@ -92,7 +92,7 @@
                   Grid.Column="2" 
                   Grid.Row="3"
                   Grid.ColumnSpan="2"
-                  Margin="10,20,10,10"
+                  Margin="20,20,20,10"
                   IsEnabled="{Binding RbMetals}"
                   SelectedItem="{Binding Path=SelectedMetal, Mode=OneWayToSource}"
                   DisplayMemberPath="Name">
@@ -104,7 +104,7 @@
                   Grid.Column="2" 
                   Grid.Row="3"
                   Grid.ColumnSpan="2"
-                  Margin="10,20,10,10"
+                  Margin="20,20,20,10"
                   IsEnabled="{Binding RbSizes}"
                   Visibility="{Binding RbSizesIsVisible}"
                   SelectedItem="{Binding Path=SelectedRingSize, Mode=OneWayToSource}"
@@ -120,7 +120,7 @@
                      Content="Modify"
                      VerticalContentAlignment="Center"
                      MinWidth="100"
-                     Margin="20,10,10,10"
+                     Margin="50,10,0,10"
                      GroupName="GroupSettings" >
             <RadioButton.RenderTransform>
                 <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
@@ -136,7 +136,7 @@
                      Content="Add"
                      VerticalContentAlignment="Center"
                      MinWidth="100"
-                     Margin="20,10,10,10"
+                     Margin="20,10,0,10"
                      GroupName="GroupSettings" >
             <RadioButton.RenderTransform>
                 <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
@@ -152,7 +152,7 @@
                      Content="Remove"
                      VerticalContentAlignment="Center"
                      MinWidth="100"
-                     Margin="20,10,10,10"
+                     Margin="40,10,00,10"
                      GroupName="GroupSettings" >
             <RadioButton.RenderTransform>
                 <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
@@ -164,7 +164,7 @@
                    Grid.Column="1" 
                    Grid.Row="5" 
                    Text="N/A" 
-                   Margin="20,20,10,10" />
+                   Margin="50,20,0,10" />
 
         <!-- Input box for first variable -->
         <TextBox x:Name="Variable1Input" 
@@ -172,14 +172,14 @@
                  Grid.Row="5"    
                  Grid.ColumnSpan="2"
                  IsEnabled="{Binding ActivateInput1}"
-                 Margin="30,10,30,10" />
+                 Margin="40,10,40,10" />
 
         <!-- Text for second variable -->
         <TextBlock x:Name="Variable2Name" 
                    Grid.Column="1" 
                    Grid.Row="6" 
                    Text="N/A" 
-                   Margin="20,20,10,10" />
+                   Margin="50,20,0,10" />
 
         <!-- Input box for second variable -->
         <TextBox x:Name="Variable2Input" 
@@ -187,14 +187,14 @@
                  Grid.Row="6"    
                  Grid.ColumnSpan="2"
                  IsEnabled="{Binding ActivateInput2}"
-                 Margin="30,10,30,10" />
+                 Margin="40,10,40,10" />
 
         <!-- Text for third variable -->
         <TextBlock x:Name="Variable3Name" 
                    Grid.Column="1" 
                    Grid.Row="7" 
                    Text="N/A" 
-                   Margin="20,20,10,10" />
+                   Margin="50,20,0,10" />
 
         <!-- Input box for third variable -->
         <TextBox x:Name="Variable3Input" 
@@ -202,7 +202,7 @@
                  Grid.Row="7"    
                  Grid.ColumnSpan="2"
                  IsEnabled="{Binding ActivateInput3}"
-                 Margin="30,10,30,10" />
+                 Margin="40,10,40,10" />
 
         <!-- Alter list item button -->
         <Button x:Name="AlterButton" 
@@ -210,7 +210,7 @@
                 Content="Make Changes" 
                 Grid.Column="1" 
                 Grid.Row="8"   
-                Margin="30,10,30,10" />
+                Margin="20,10,20,10" />
 
         <!-- Invalid input text -->
         <TextBlock x:Name="InvalidInputText" 
@@ -218,7 +218,7 @@
                    Grid.Row="8" 
                    Grid.ColumnSpan="2"
                    Text="" 
-                   Margin="30,10,30,10" />
+                   Margin="50,10,50,10" />
         
     </Grid>
 </UserControl>

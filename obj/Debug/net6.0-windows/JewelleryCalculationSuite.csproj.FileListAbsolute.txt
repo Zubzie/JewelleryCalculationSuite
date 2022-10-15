@@ -70,3 +70,6 @@ C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Debug\net6.0-
 C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Debug\net6.0-windows\Views\InformationView.baml
 C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Debug\net6.0-windows\Views\SettingsView.g.cs
 C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Debug\net6.0-windows\Views\SettingsView.baml
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Debug\net6.0-windows\JewelleryCalculationSuite_Content.g.cs
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Debug\net6.0-windows\Views\MainPageView.g.cs
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Debug\net6.0-windows\Views\MainPageView.baml

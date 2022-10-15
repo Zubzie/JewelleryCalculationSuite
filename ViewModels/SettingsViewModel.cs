@@ -1,7 +1,8 @@
 ﻿using Caliburn.Micro;
 using JewelleryCalculationSuite.Models;
-using JewelleryCalculationSuite.ViewModels;
 using System;
+using System.IO;
+using System.Text.Json;
 using System.Windows;
 
 namespace JewelleryCalculationSuite.ViewModels
@@ -13,6 +14,7 @@ namespace JewelleryCalculationSuite.ViewModels
         private Visibility _rbSizesIsVisible = Visibility.Hidden;
         private MetalModel? _selectedMetal;
         private RingSizeModel? _selectedRingSize;
+        private string? _jsonString;
 
         private bool _metalChecked;
         private bool _sizeChecked;
@@ -24,14 +26,14 @@ namespace JewelleryCalculationSuite.ViewModels
         private bool _activateInput2;
         private bool _activateInput3;
 
+        private string _variable1Name;
+        private string _variable2Name;
+        private string _variable3Name;
+
         private string _variable1Input = "";
         private string _variable2Input = "";
         private string _variable3Input = "";
-        private string _invalidInputText = "";
-
-        private string _variable1Name;
-        private string _variable2Name;
-        private string _variable3Name;      
+        private string _invalidInputText = "";           
 
         public SettingsViewModel(BindableCollection<MetalModel> metals, BindableCollection<RingSizeModel> ringSizes)
         {
@@ -220,6 +222,8 @@ namespace JewelleryCalculationSuite.ViewModels
 
         public void AlterButton()
         {
+            var options = new JsonSerializerOptions { WriteIndented = true };
+
             // Code will execute if the Modify radio button is selected
             if (_modifyChecked)
             {
@@ -234,6 +238,8 @@ namespace JewelleryCalculationSuite.ViewModels
                             {
                                 _metals.RemoveAt(i);
                                 _metals.Insert(i, new MetalModel(_variable1Input, Convert.ToDouble(_variable2Input)));
+                                _jsonString = JsonSerializer.Serialize(_metals, options);
+                                File.WriteAllText(@"Metals.json", _jsonString);
                             }
                         }
                     }
@@ -250,6 +256,8 @@ namespace JewelleryCalculationSuite.ViewModels
                             {
                                 _ringSizes.RemoveAt(i);
                                 _ringSizes.Insert(i, new RingSizeModel(_variable1Input, Convert.ToDouble(_variable2Input), Convert.ToDouble(_variable3Input)));
+                                _jsonString = JsonSerializer.Serialize(_ringSizes, options);
+                                File.WriteAllText(@"RingSizes.json", _jsonString);
                             }
                         }
                     }
@@ -259,7 +267,7 @@ namespace JewelleryCalculationSuite.ViewModels
 
             // Code will execute if the Add radio button is selected
             if (_addChecked)
-            {
+            {                
                 if (RbMetals)
                 {
                     if (Variable1Input != null && IsDouble(Variable2Input))
@@ -270,8 +278,10 @@ namespace JewelleryCalculationSuite.ViewModels
                             if (SelectedMetal == _metals[i])
                             {
                                 _metals.Add(new MetalModel(_variable1Input, Convert.ToDouble(_variable2Input)));
+                                _jsonString = JsonSerializer.Serialize(_metals, options);
+                                File.WriteAllText(@"Metals.json", _jsonString);
                             }
-                        }
+                        }                     
                     }
                     else { _invalidInputText = "Invalid Input"; NotifyOfPropertyChange(() => InvalidInputText); }
                 }               
@@ -285,8 +295,10 @@ namespace JewelleryCalculationSuite.ViewModels
                             if (SelectedRingSize == _ringSizes[i])
                             {
                                 _ringSizes.Add(new RingSizeModel(_variable1Input, Convert.ToDouble(_variable2Input), Convert.ToDouble(_variable3Input)));
+                                _jsonString = JsonSerializer.Serialize(_ringSizes, options);
+                                File.WriteAllText(@"RingSizes.json", _jsonString);
                             }
-                        }
+                        }                       
                     }
                     else { _invalidInputText = "Invalid Input"; NotifyOfPropertyChange(() => InvalidInputText); }
                 }     
@@ -302,6 +314,8 @@ namespace JewelleryCalculationSuite.ViewModels
                         if (SelectedMetal == _metals[i])
                         {
                             _metals.RemoveAt(i);
+                            _jsonString = JsonSerializer.Serialize(_metals, options);
+                            File.WriteAllText(@"Metals.json", _jsonString);
                         }
                     }                                         
                 }
@@ -312,6 +326,8 @@ namespace JewelleryCalculationSuite.ViewModels
                         if (SelectedRingSize == _ringSizes[i])
                         {
                             _ringSizes.RemoveAt(i);
+                            _jsonString = JsonSerializer.Serialize(_ringSizes, options);
+                            File.WriteAllText(@"RingSizes.json", _jsonString);
                         }
                     }
                 }
@@ -320,13 +336,19 @@ namespace JewelleryCalculationSuite.ViewModels
 
         public void RevertToDefaultButton()
         {
+            var options = new JsonSerializerOptions { WriteIndented = true };
+
             if (RbMetals)
             {
                 AddDefaultMetals();
+                _jsonString = JsonSerializer.Serialize(_metals, options);
+                File.WriteAllText(@"Metals.json", _jsonString);
             }
             if (RbSizes)
             {
                 AddDefaultSizes();
+                _jsonString = JsonSerializer.Serialize(_ringSizes, options);
+                File.WriteAllText(@"RingSizes.json", _jsonString);
             }
         }
 

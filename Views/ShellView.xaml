@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:JewelleryCalculationSuite.Views"
+        xmlns:local="clr-namespace:JewelleryCalculationSuite.Views" xmlns:viewmodels="clr-namespace:JewelleryCalculationSuite.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ShellViewModel}"
         mc:Ignorable="d" FontSize="24" FontFamily="Segoe UI"
-        Title="Jewellery Calculation Suite" Height="650" Width="900">
+        Title="Jewellery Calculation Suite" Height="650" Width="700">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -34,47 +34,65 @@
 
         <ContentControl x:Name="ActiveItem" Grid.Row="1" Grid.Column="2" Grid.RowSpan="7" MinWidth="400"/>
 
-        <!-- Metal Converter Button -->
-        <Button x:Name="LoadPageMetalConverter" 
+        <!-- Information Button -->
+        <Button x:Name="LoadPageInformation" 
                 Grid.Row="1" 
                 Grid.Column="1"
+                Width="95"
+                Background="LightBlue"
                 Margin="0,0,20,0" >
-            Metal Converter</Button>
+            <Image Source="{Binding InformationPath}" />
+        </Button>
+        
+        <!-- Metal Converter Button -->
+        <Button x:Name="LoadPageMetalConverter" 
+                Grid.Row="2" 
+                Grid.Column="1"
+                Width="95"
+                Background="LightBlue"
+                Margin="0,0,20,0" >
+            <Image Source="{Binding MetalConverterPath}" />
+        </Button>
 
         <!-- Ring Weight Button -->
         <Button x:Name="LoadPageRingWeight" 
-                Grid.Row="2" 
+                Grid.Row="3" 
                 Grid.Column="1"
+                Width="95"
+                Background="LightBlue"
                 Margin="0,0,20,0" >
-            Ring Weight</Button>
+            <Image Source="{Binding RingWeightPath}" />
+        </Button>
 
         <!-- Ring Resize Button -->
         <Button x:Name="LoadPageRingResizer" 
-                Grid.Row="3" 
+                Grid.Row="4" 
                 Grid.Column="1"
+                Width="95"
+                Background="LightBlue"
                 Margin="0,0,20,0" >
-            Ring Resizer</Button>
+            <Image Source="{Binding RingResizerPath}" />
+        </Button>
 
         <!-- Rolling Wire Button -->
         <Button x:Name="LoadPageRollingWire" 
-                Grid.Row="4" 
-                Grid.Column="1"
-                Margin="0,0,20,0" >
-            Rolling Wire</Button>
-
-        <!-- Information Button -->
-        <Button x:Name="LoadPageInformation" 
                 Grid.Row="5" 
                 Grid.Column="1"
+                Width="95"
+                Background="LightBlue"
                 Margin="0,0,20,0" >
-            Information</Button>
+            <Image Source="{Binding RollingWirePath}" />
+        </Button>
 
         <!-- Settings Button -->
         <Button x:Name="LoadPageSettings" 
                 Grid.Row="6" 
                 Grid.Column="1"
+                Width="95"
+                Background="LightBlue"
                 Margin="0,0,20,0" >
-            Settings</Button>
+            <Image Source="{Binding SettingsPath}" />
+        </Button>
 
     </Grid>
 </Window>

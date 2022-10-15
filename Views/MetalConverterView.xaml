@@ -11,7 +11,6 @@
             <ColumnDefinition Width="0"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="0"/>
         </Grid.ColumnDefinitions>
@@ -29,22 +28,22 @@
         <!-- Heading -->
         <TextBlock Text="Metal Converter" 
                    ToolTip="Original metal type"
-                   Grid.Column="2" 
+                   Grid.Column="1" 
                    Grid.Row="1" 
                    FontSize="32" 
                    FontWeight="Bold" 
-                   Grid.ColumnSpan="3" 
+                   Grid.ColumnSpan="2" 
                    Margin="20,0,0,20" />
 
         <!-- Old metal text -->
-        <TextBlock Grid.Column="2" 
+        <TextBlock Grid.Column="1" 
                    Grid.Row="2" 
                    Text="Original Metal" 
-                   Margin="50,10,50,10" />
+                   Margin="50,10,0,10" />
 
         <!-- Old metal drop down box -->
         <ComboBox x:Name="OrigMetalsDropDown"
-                  Grid.Column="3" 
+                  Grid.Column="2" 
                   Grid.Row="2"
                   Margin="10"
                   SelectedItem="{Binding Path=OrigSelectedMetal, Mode=OneWayToSource}"
@@ -52,15 +51,15 @@
         </ComboBox>
 
         <!-- New metal text -->
-        <TextBlock Grid.Column="2" 
+        <TextBlock Grid.Column="1" 
                    Grid.Row="3" 
                    Text="New Metal" 
-                   Margin="50,10,50,10" />
+                   Margin="50,10,0,10" />
 
         <!-- New metal drop down box -->
         <ComboBox x:Name="NewMetalsDropDown"
                   ToolTip="The metal type the metal will be converted to"
-                  Grid.Column="3" 
+                  Grid.Column="2" 
                   Grid.Row="3"
                   Margin="10"
                   SelectedItem="{Binding Path=NewSelectedMetal, Mode=OneWayToSource}"
@@ -68,31 +67,31 @@
         </ComboBox>
 
         <!-- Metal weight text -->
-        <TextBlock Grid.Column="2" 
+        <TextBlock Grid.Column="1" 
                    Grid.Row="4" 
                    Text="Weight (grams)" 
-                   Margin="50,10,50,10" />
+                   Margin="50,10,0,10" />
 
         <!-- Metal weight input box -->
         <TextBox x:Name="MetalWeight" 
                  ToolTip="The weight of the original metal"
-                 Grid.Column="3" 
+                 Grid.Column="2" 
                  Grid.Row="4"                 
                  Margin="30,10,30,10"  />
 
         <!-- Calculation button -->
         <Button x:Name="CalculateButton" 
                 Content="Calculate" 
-                Grid.Column="2" 
+                Grid.Column="1" 
                 Grid.Row="5" 
-                MinWidth="200"
-                Margin="30,10,30,10"  />
+                MinWidth="150"
+                Margin="75,10,75,10"  />
 
         <!-- Calculation output box -->
         <TextBlock x:Name="CalculateText" 
-                 Grid.Column="3" 
+                 Grid.Column="2" 
                  Grid.Row="5"
-                 MinWidth="200"
+                 MinWidth="175"
                  Margin="30,10,30,10" />
     </Grid>
 </UserControl>

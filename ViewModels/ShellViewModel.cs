@@ -9,33 +9,30 @@ namespace JewelleryCalculationSuite.ViewModels
     {
         private BindableCollection<MetalModel> _metals = new();
         private BindableCollection<RingSizeModel> _ringSizes = new();
-        private BindableCollection<ProfileModel> _profiles = new();
-        string ?_jsonString;
+        private string ?_jsonString;
 
         public ShellViewModel()
         {
-            ActivateItemAsync(new InformationViewModel());
+            ActivateItemAsync(new MainPageViewModel());
             
             try
             {
-                _jsonString = File.ReadAllText(@"Metals.json");
+                _jsonString = File.ReadAllText(@"Data/Metals.json");
                 _metals = JsonSerializer.Deserialize<BindableCollection<MetalModel>>(_jsonString);
             }
             catch(System.IO.FileNotFoundException) { MakeDefaultMetals(); }
 
             try
             {
-                _jsonString = File.ReadAllText(@"RingSizes.json");
+                _jsonString = File.ReadAllText(@"Data/RingSizes.json");
                 _ringSizes = JsonSerializer.Deserialize<BindableCollection<RingSizeModel>>(_jsonString);
             }
             catch (System.IO.FileNotFoundException) { MakeDefaultSizes(); }
+        }
 
-            try
-            {
-                _jsonString = File.ReadAllText(@"Profiles.json");
-                _profiles = JsonSerializer.Deserialize<BindableCollection<ProfileModel>>(_jsonString);
-            }
-            catch (System.IO.FileNotFoundException) { MakeDefaultProfiles(); }
+        public void LoadPageInformation()
+        {
+            ActivateItemAsync(new InformationViewModel());
         }
 
         public void LoadPageMetalConverter()
@@ -45,26 +42,52 @@ namespace JewelleryCalculationSuite.ViewModels
 
         public void LoadPageRingWeight()
         {
-            ActivateItemAsync(new RingWeightViewModel(_metals, _ringSizes, _profiles));
+            ActivateItemAsync(new RingWeightViewModel(_metals, _ringSizes));
         }
 
         public void LoadPageRingResizer()
         {
-            ActivateItemAsync(new RingResizerViewModel(_metals, _ringSizes, _profiles));
+            ActivateItemAsync(new RingResizerViewModel(_metals, _ringSizes));
         }
 
         public void LoadPageRollingWire()
         {
-           ActivateItemAsync(new RollingWireViewModel(_profiles));
-        }
-        public void LoadPageInformation()
-        {
-            ActivateItemAsync(new InformationViewModel());
-        }
+           ActivateItemAsync(new RollingWireViewModel());
+        }   
 
         public void LoadPageSettings()
         {
             ActivateItemAsync(new SettingsViewModel(_metals, _ringSizes));
+        }
+
+        public static string InformationPath
+        {
+            get { return Path.GetFullPath("Images/Information.png"); }
+        }
+
+        public static string MetalConverterPath
+        {
+            get { return Path.GetFullPath("Images/MetalConverter.png"); }
+        }
+
+        public static string RingWeightPath
+        {
+            get { return Path.GetFullPath("Images/RingWeight.png"); }
+        }
+
+        public static string RingResizerPath
+        {
+            get { return Path.GetFullPath("Images/RingResizer.png"); }
+        }
+
+        public static string RollingWirePath
+        {
+            get { return Path.GetFullPath("Images/RollingWire.png"); }
+        }     
+
+        public static string SettingsPath
+        {
+            get { return Path.GetFullPath("Images/Settings.png"); }
         }
 
         public void MakeDefaultMetals()
@@ -86,7 +109,7 @@ namespace JewelleryCalculationSuite.ViewModels
             _metals.Add(new MetalModel("Wax", 1.0));
             var options = new JsonSerializerOptions { WriteIndented = true };
             _jsonString = JsonSerializer.Serialize(_metals, options);
-            File.WriteAllText(@"Metals.json", _jsonString);
+            File.WriteAllText(@"Data/Metals.json", _jsonString);
         }
 
         public void MakeDefaultSizes()
@@ -119,18 +142,7 @@ namespace JewelleryCalculationSuite.ViewModels
             _ringSizes.Add(new RingSizeModel("Z", 13.0, 21.79));
             var options = new JsonSerializerOptions { WriteIndented = true };
             _jsonString = JsonSerializer.Serialize(_ringSizes, options);
-            File.WriteAllText(@"RingSizes.json", _jsonString);
-        }
-
-        public void MakeDefaultProfiles()
-        {
-            _profiles.Add(new ProfileModel("Round"));
-            _profiles.Add(new ProfileModel("Half-Round"));
-            _profiles.Add(new ProfileModel("Square"));
-            _profiles.Add(new ProfileModel("Rectangle"));
-            var options = new JsonSerializerOptions { WriteIndented = true };
-            _jsonString = JsonSerializer.Serialize(_profiles, options);
-            File.WriteAllText(@"Profiles.json", _jsonString);
+            File.WriteAllText(@"Data/RingSizes.json", _jsonString);
         }
     }
 }

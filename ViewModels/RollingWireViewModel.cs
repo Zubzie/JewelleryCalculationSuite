@@ -6,35 +6,21 @@ namespace JewelleryCalculationSuite.ViewModels
 {
     public class RollingWireViewModel : CalcFunctions
     {
-        private BindableCollection<ProfileModel> _profiles;
-        private ProfileModel _selectedProfile;
+        private BindableCollection<ProfileModel> _profiles = new();
+        private ProfileModel? _selectedProfile;
+
         private string _width = "";
         private string _thickness = "";
         private string _length = "";
         private string _stockSize = "";
+
         private bool _isStock;
-
-        public bool IsStock 
-        { 
-            get { return _isStock; }
-            set
-            {
-                _isStock = value;
-                NotifyOfPropertyChange(() => IsStock);
-            }
-        }
-
-        public RollingWireViewModel(BindableCollection<ProfileModel> profiles)
+       
+        public RollingWireViewModel()
         {
-            for (int i = 0; i < profiles.Count; i++)
-            {
-                if (profiles[i].Shape == "Half-Round" || profiles[i].Shape == "Rectangle")
-                {
-                    profiles.RemoveAt(i);
-                }
-            }
-            _profiles = profiles;        
-        }
+            _profiles.Add(new ProfileModel("Round"));
+            _profiles.Add(new ProfileModel("Square"));
+        }       
 
         public BindableCollection<ProfileModel> ProfilesDropDown
         { 
@@ -45,51 +31,36 @@ namespace JewelleryCalculationSuite.ViewModels
         public ProfileModel SelectedProfile
         {
             get { return _selectedProfile; }
-            set
-            {
-                _selectedProfile = value;
-                NotifyOfPropertyChange(() => SelectedProfile);
-            }
+            set { _selectedProfile = value; NotifyOfPropertyChange(() => SelectedProfile); }
+        }
+        public bool IsStock
+        {
+            get { return _isStock; }
+            set { _isStock = value; NotifyOfPropertyChange(() => IsStock); }
         }
 
         public string WidthInput
         {
             get { return _width; }
-            set
-            {
-                _width = value;
-                NotifyOfPropertyChange(() => WidthInput);
-            }
+            set { _width = value; NotifyOfPropertyChange(() => WidthInput); }
         }
 
         public string ThicknessInput
         {
             get { return _thickness; }
-            set
-            {
-                _thickness = value;
-                NotifyOfPropertyChange(() => ThicknessInput);
-            }
+            set { _thickness = value; NotifyOfPropertyChange(() => ThicknessInput); }
         }
 
         public string LengthInput
         {
             get { return _length; }
-            set
-            {
-                _length = value;
-                NotifyOfPropertyChange(() => LengthInput);
-            }
+            set { _length = value; NotifyOfPropertyChange(() => LengthInput); }
         }
 
         public string StockSizeInput
         {
             get { return _stockSize; }
-            set
-            {
-                _stockSize = value;
-                NotifyOfPropertyChange(() => StockSizeInput);
-            }
+            set { _stockSize = value; NotifyOfPropertyChange(() => StockSizeInput); }
         }
 
         public override void CalculateButton()

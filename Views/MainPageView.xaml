@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="JewelleryCalculationSuite.Views.MainPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:JewelleryCalculationSuite.Views" xmlns:viewmodels="clr-namespace:JewelleryCalculationSuite.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainPageViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0"/>
+        </Grid.RowDefinitions>
+
+        <!-- Heading -->
+        <TextBlock Grid.Column="1" 
+                   Grid.Row="1" 
+                   FontSize="32" 
+                   FontWeight="Bold" 
+                   TextAlignment="Center"
+                   Margin="0,50,0,10">
+            Jewellery <LineBreak/> Calculation <LineBreak/> Suite
+        </TextBlock>
+
+        <!-- Author Details -->
+        <TextBlock Grid.Column="1" 
+                   Grid.Row="2" 
+                   FontSize="20" 
+                   Text="By Jake Zubov"
+                   TextAlignment="Center"
+                   Margin="0,10,0,10" />
+
+        <Image Grid.Column="1"
+               Grid.Row="3"
+               Width="200"
+               Source="{Binding ImagePath}" />
+
+    </Grid>
+</UserControl>
