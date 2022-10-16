@@ -40,6 +40,7 @@
                 Grid.Column="1"
                 Width="95"
                 Background="LightBlue"
+                ToolTip="Information"
                 Margin="0,0,20,0" >
             <Image Source="{Binding InformationPath}" />
         </Button>
@@ -50,6 +51,7 @@
                 Grid.Column="1"
                 Width="95"
                 Background="LightBlue"
+                ToolTip="Metal Converter"
                 Margin="0,0,20,0" >
             <Image Source="{Binding MetalConverterPath}" />
         </Button>
@@ -60,6 +62,7 @@
                 Grid.Column="1"
                 Width="95"
                 Background="LightBlue"
+                ToolTip="Ring Weight"
                 Margin="0,0,20,0" >
             <Image Source="{Binding RingWeightPath}" />
         </Button>
@@ -70,6 +73,7 @@
                 Grid.Column="1"
                 Width="95"
                 Background="LightBlue"
+                ToolTip="Ring Resizer"
                 Margin="0,0,20,0" >
             <Image Source="{Binding RingResizerPath}" />
         </Button>
@@ -80,6 +84,7 @@
                 Grid.Column="1"
                 Width="95"
                 Background="LightBlue"
+                ToolTip="Rolling Wire"
                 Margin="0,0,20,0" >
             <Image Source="{Binding RollingWirePath}" />
         </Button>
@@ -90,6 +95,7 @@
                 Grid.Column="1"
                 Width="95"
                 Background="LightBlue"
+                ToolTip="Settings"
                 Margin="0,0,20,0" >
             <Image Source="{Binding SettingsPath}" />
         </Button>

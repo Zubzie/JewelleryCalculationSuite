@@ -119,7 +119,7 @@
                      FontSize="18"
                      Content="Modify"
                      VerticalContentAlignment="Center"
-                     MinWidth="100"
+                     MinWidth="110"
                      Margin="50,10,0,10"
                      GroupName="GroupSettings" >
             <RadioButton.RenderTransform>
@@ -135,7 +135,7 @@
                      FontSize="18"
                      Content="Add"
                      VerticalContentAlignment="Center"
-                     MinWidth="100"
+                     MinWidth="110"
                      Margin="20,10,0,10"
                      GroupName="GroupSettings" >
             <RadioButton.RenderTransform>
@@ -151,7 +151,7 @@
                      FontSize="18"
                      Content="Remove"
                      VerticalContentAlignment="Center"
-                     MinWidth="100"
+                     MinWidth="110"
                      Margin="40,10,00,10"
                      GroupName="GroupSettings" >
             <RadioButton.RenderTransform>

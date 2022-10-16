@@ -14,7 +14,10 @@ namespace JewelleryCalculationSuite.ViewModels
         private Visibility _rbSizesIsVisible = Visibility.Hidden;
         private MetalModel? _selectedMetal;
         private RingSizeModel? _selectedRingSize;
+
         private string? _jsonString;
+        private readonly string _metalPath;
+        private readonly string _ringSizePath;
 
         private bool _metalChecked;
         private bool _sizeChecked;
@@ -39,6 +42,8 @@ namespace JewelleryCalculationSuite.ViewModels
         {
             _metals = metals;
             _ringSizes = ringSizes;
+            _metalPath = "Data/Metals.json";
+            _ringSizePath = "Data/RingSizes.json";
             NothingCheckedSettings();
         }
 
@@ -70,6 +75,9 @@ namespace JewelleryCalculationSuite.ViewModels
                 {
                     _rbSizesIsVisible = Visibility.Hidden; NotifyOfPropertyChange(() => RbSizesIsVisible);
                     _selectedRingSize = null; NotifyOfPropertyChange(() => SelectedRingSize);
+                    _variable1Input = ""; NotifyOfPropertyChange(() => Variable1Input);
+                    _variable2Input = ""; NotifyOfPropertyChange(() => Variable2Input);
+                    _variable3Input = ""; NotifyOfPropertyChange(() => Variable3Input);
                     MetalCheckedSettings();
                 }
             }
@@ -85,8 +93,11 @@ namespace JewelleryCalculationSuite.ViewModels
                 {
                     _rbSizesIsVisible = Visibility.Visible; NotifyOfPropertyChange(() => RbSizesIsVisible);
                     _selectedMetal = null; NotifyOfPropertyChange(() => SelectedMetal);
+                    _variable1Input = ""; NotifyOfPropertyChange(() => Variable1Input);
+                    _variable2Input = ""; NotifyOfPropertyChange(() => Variable2Input);
+                    _variable3Input = ""; NotifyOfPropertyChange(() => Variable3Input);
                     SizeCheckedSettings();
-                }
+                }           
             }
         }
 
@@ -105,7 +116,15 @@ namespace JewelleryCalculationSuite.ViewModels
         public MetalModel SelectedMetal
         {
             get { return _selectedMetal; }
-            set { _selectedMetal = value; NotifyOfPropertyChange(() => SelectedMetal); }
+            set
+            { 
+                _selectedMetal = value; NotifyOfPropertyChange(() => SelectedMetal);
+                if (_metalChecked && _modifyChecked)
+                {
+                    _variable1Input = _selectedMetal.Name; NotifyOfPropertyChange(() => Variable1Input);
+                    _variable2Input = _selectedMetal.SpecificGravity.ToString(); NotifyOfPropertyChange(() => Variable2Input);
+                }
+            }
         }
 
         public BindableCollection<RingSizeModel> RingSizeDropDown
@@ -117,7 +136,16 @@ namespace JewelleryCalculationSuite.ViewModels
         public RingSizeModel SelectedRingSize
         {
             get { return _selectedRingSize; }
-            set { _selectedRingSize = value; NotifyOfPropertyChange(() => SelectedRingSize); }
+            set 
+            {
+                _selectedRingSize = value; NotifyOfPropertyChange(() => SelectedRingSize);
+                if (_sizeChecked && _modifyChecked && _selectedRingSize != null)
+                {
+                    _variable1Input = _selectedRingSize.LetterSize; NotifyOfPropertyChange(() => Variable1Input);
+                    _variable2Input = _selectedRingSize.NumberSize.ToString(); NotifyOfPropertyChange(() => Variable2Input);
+                    _variable3Input = _selectedRingSize.Diameter.ToString(); NotifyOfPropertyChange(() => Variable3Input);
+                }
+            }
         }
 
         public bool RbModify
@@ -126,8 +154,19 @@ namespace JewelleryCalculationSuite.ViewModels
             set
             {
                 _modifyChecked = value; NotifyOfPropertyChange(() => RbModify);
-                //if (_sizeChecked) { SizeCheckedSettings(); }
-                //if (_metalChecked) { MetalCheckedSettings(); }
+                if(_modifyChecked && _metalChecked && _selectedMetal != null) 
+                {
+                    _variable1Input = _selectedMetal.Name; NotifyOfPropertyChange(() => Variable1Input);
+                    _variable2Input = _selectedMetal.SpecificGravity.ToString(); NotifyOfPropertyChange(() => Variable2Input);
+                }
+                if (_modifyChecked && _sizeChecked && _selectedRingSize != null)
+                {
+                    _variable1Input = _selectedRingSize.LetterSize; NotifyOfPropertyChange(() => Variable1Input);
+                    _variable2Input = _selectedRingSize.NumberSize.ToString(); NotifyOfPropertyChange(() => Variable2Input);
+                    _variable3Input = _selectedRingSize.Diameter.ToString(); NotifyOfPropertyChange(() => Variable3Input);
+                }
+                if (_modifyChecked && _sizeChecked) { SizeCheckedSettings(); }
+                if (_modifyChecked && _metalChecked) { MetalCheckedSettings(); }
             }
         }
 
@@ -137,8 +176,20 @@ namespace JewelleryCalculationSuite.ViewModels
             set
             {
                 _addChecked = value; NotifyOfPropertyChange(() => RbAdd);
-                //if (_sizeChecked) { SizeCheckedSettings(); }
-                //if (_metalChecked) { MetalCheckedSettings(); }
+                if (_addChecked && _metalChecked && _selectedMetal != null)
+                {
+                    _variable1Input = ""; NotifyOfPropertyChange(() => Variable1Input);
+                    _variable2Input = ""; NotifyOfPropertyChange(() => Variable2Input);
+                    _variable3Input = ""; NotifyOfPropertyChange(() => Variable3Input);
+                }
+                if (_addChecked && _sizeChecked && _selectedRingSize != null)
+                {
+                    _variable1Input = ""; NotifyOfPropertyChange(() => Variable1Input);
+                    _variable2Input = ""; NotifyOfPropertyChange(() => Variable2Input);
+                    _variable3Input = ""; NotifyOfPropertyChange(() => Variable3Input);
+                }
+                if (_addChecked && _sizeChecked) { SizeCheckedSettings(); }
+                if (_addChecked && _metalChecked) { MetalCheckedSettings(); }
             }
         }
 
@@ -148,7 +199,19 @@ namespace JewelleryCalculationSuite.ViewModels
             set
             {
                 _removeChecked = value; NotifyOfPropertyChange(() => RbRemove);
-                //NothingCheckedSettings();
+                if (_removeChecked && _metalChecked && _selectedMetal != null)
+                {
+                    _variable1Input = ""; NotifyOfPropertyChange(() => Variable1Input);
+                    _variable2Input = ""; NotifyOfPropertyChange(() => Variable2Input);
+                    _variable3Input = ""; NotifyOfPropertyChange(() => Variable3Input);
+                }
+                if (_removeChecked && _sizeChecked && _selectedRingSize != null)
+                {
+                    _variable1Input = ""; NotifyOfPropertyChange(() => Variable1Input);
+                    _variable2Input = ""; NotifyOfPropertyChange(() => Variable2Input);
+                    _variable3Input = ""; NotifyOfPropertyChange(() => Variable3Input);
+                }
+                if (_removeChecked) { NothingCheckedSettings(); }
             }
         }
 
@@ -166,6 +229,29 @@ namespace JewelleryCalculationSuite.ViewModels
         {
             get { return _variable3Name; }
             set { _variable3Name = value; NotifyOfPropertyChange(() => Variable3Name); }
+        }
+
+        public string Variable1Input
+        {
+            get { return _variable1Input; }
+            set { _variable1Input = value; NotifyOfPropertyChange(() => Variable1Input); }
+        }
+
+        public string Variable2Input
+        {
+            get { return _variable2Input; }
+            set { _variable2Input = value; NotifyOfPropertyChange(() => Variable2Input); }
+        }
+
+        public string Variable3Input
+        {
+            get { return _variable3Input; }
+            set { _variable3Input = value; NotifyOfPropertyChange(() => Variable3Input); }
+        }
+        public string InvalidInputText
+        {
+            get { return _invalidInputText; }
+            set { _invalidInputText = value; NotifyOfPropertyChange(() => InvalidInputText); }
         }
 
         public void SizeCheckedSettings()
@@ -196,29 +282,7 @@ namespace JewelleryCalculationSuite.ViewModels
             _variable1Name = "N/A"; NotifyOfPropertyChange(() => Variable1Name);
             _variable2Name = "N/A"; NotifyOfPropertyChange(() => Variable2Name);
             _variable3Name = "N/A"; NotifyOfPropertyChange(() => Variable3Name);
-        }
-
-        public string Variable1Input
-        {
-            get { return _variable1Input; }
-            set { _variable1Input = value; NotifyOfPropertyChange(() => Variable1Input); }
-        }
-        public string Variable2Input
-        {
-            get { return _variable2Input; }
-            set { _variable2Input = value; NotifyOfPropertyChange(() => Variable2Input); }
-        }
-        public string Variable3Input
-        {
-            get { return _variable3Input; }
-            set { _variable3Input = value; NotifyOfPropertyChange(() => Variable3Input); }
-        }
-
-        public string InvalidInputText
-        {
-            get { return _invalidInputText; }
-            set { _invalidInputText = value; NotifyOfPropertyChange(() => InvalidInputText); }
-        }
+        }             
 
         public void AlterButton()
         {
@@ -239,7 +303,7 @@ namespace JewelleryCalculationSuite.ViewModels
                                 _metals.RemoveAt(i);
                                 _metals.Insert(i, new MetalModel(_variable1Input, Convert.ToDouble(_variable2Input)));
                                 _jsonString = JsonSerializer.Serialize(_metals, options);
-                                File.WriteAllText(@"Metals.json", _jsonString);
+                                File.WriteAllText(@_metalPath, _jsonString);
                             }
                         }
                     }
@@ -257,7 +321,7 @@ namespace JewelleryCalculationSuite.ViewModels
                                 _ringSizes.RemoveAt(i);
                                 _ringSizes.Insert(i, new RingSizeModel(_variable1Input, Convert.ToDouble(_variable2Input), Convert.ToDouble(_variable3Input)));
                                 _jsonString = JsonSerializer.Serialize(_ringSizes, options);
-                                File.WriteAllText(@"RingSizes.json", _jsonString);
+                                File.WriteAllText(@_ringSizePath, _jsonString);
                             }
                         }
                     }
@@ -279,7 +343,7 @@ namespace JewelleryCalculationSuite.ViewModels
                             {
                                 _metals.Add(new MetalModel(_variable1Input, Convert.ToDouble(_variable2Input)));
                                 _jsonString = JsonSerializer.Serialize(_metals, options);
-                                File.WriteAllText(@"Metals.json", _jsonString);
+                                File.WriteAllText(@_metalPath, _jsonString);
                             }
                         }                     
                     }
@@ -296,7 +360,7 @@ namespace JewelleryCalculationSuite.ViewModels
                             {
                                 _ringSizes.Add(new RingSizeModel(_variable1Input, Convert.ToDouble(_variable2Input), Convert.ToDouble(_variable3Input)));
                                 _jsonString = JsonSerializer.Serialize(_ringSizes, options);
-                                File.WriteAllText(@"RingSizes.json", _jsonString);
+                                File.WriteAllText(@_ringSizePath, _jsonString);
                             }
                         }                       
                     }
@@ -315,7 +379,7 @@ namespace JewelleryCalculationSuite.ViewModels
                         {
                             _metals.RemoveAt(i);
                             _jsonString = JsonSerializer.Serialize(_metals, options);
-                            File.WriteAllText(@"Metals.json", _jsonString);
+                            File.WriteAllText(@_metalPath, _jsonString);
                         }
                     }                                         
                 }
@@ -327,7 +391,7 @@ namespace JewelleryCalculationSuite.ViewModels
                         {
                             _ringSizes.RemoveAt(i);
                             _jsonString = JsonSerializer.Serialize(_ringSizes, options);
-                            File.WriteAllText(@"RingSizes.json", _jsonString);
+                            File.WriteAllText(@_ringSizePath, _jsonString);
                         }
                     }
                 }
@@ -342,13 +406,13 @@ namespace JewelleryCalculationSuite.ViewModels
             {
                 AddDefaultMetals();
                 _jsonString = JsonSerializer.Serialize(_metals, options);
-                File.WriteAllText(@"Metals.json", _jsonString);
+                File.WriteAllText(@_metalPath, _jsonString);
             }
             if (RbSizes)
             {
                 AddDefaultSizes();
                 _jsonString = JsonSerializer.Serialize(_ringSizes, options);
-                File.WriteAllText(@"RingSizes.json", _jsonString);
+                File.WriteAllText(@_ringSizePath, _jsonString);
             }
         }
 

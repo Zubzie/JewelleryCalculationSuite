@@ -34,12 +34,12 @@
                    Grid.Row="3" 
                    FontSize="18"
                    Margin="20" >
-            This program is made to be used by Jewellery makers and <LineBreak/> 
-            hobbyists to perform basic functions to do with metal <LineBreak/>
-            manipulation. The different functions are: <LineBreak/><LineBreak/>
+            This program is designed to be used by Jewellery makers <LineBreak/> 
+            and hobbyists to perform basic calculations to assist with <LineBreak/>
+            metal manipulation. The different functions are: <LineBreak/><LineBreak/>
             
             Metal Converter - Choose two different metals and specify <LineBreak/>
-            weight of original metal to find the weight of the second. <LineBreak/><LineBreak/>
+            weight of original metal to find the weight of the second metal. <LineBreak/><LineBreak/>
             
             Ring Resizer - Will show the difference in weight between <LineBreak/>
             two rings from the given parameters. <LineBreak/><LineBreak/>

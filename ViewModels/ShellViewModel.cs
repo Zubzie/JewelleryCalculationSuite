@@ -10,21 +10,25 @@ namespace JewelleryCalculationSuite.ViewModels
         private BindableCollection<MetalModel> _metals = new();
         private BindableCollection<RingSizeModel> _ringSizes = new();
         private string ?_jsonString;
+        private readonly string _metalPath;
+        private readonly string _ringSizePath;
 
         public ShellViewModel()
         {
             ActivateItemAsync(new MainPageViewModel());
-            
+            _metalPath = "Data/Metals.json";
+            _ringSizePath = "Data/RingSizes.json";
+
             try
             {
-                _jsonString = File.ReadAllText(@"Data/Metals.json");
+                _jsonString = File.ReadAllText(@_metalPath);
                 _metals = JsonSerializer.Deserialize<BindableCollection<MetalModel>>(_jsonString);
             }
             catch(System.IO.FileNotFoundException) { MakeDefaultMetals(); }
 
             try
             {
-                _jsonString = File.ReadAllText(@"Data/RingSizes.json");
+                _jsonString = File.ReadAllText(@_ringSizePath);
                 _ringSizes = JsonSerializer.Deserialize<BindableCollection<RingSizeModel>>(_jsonString);
             }
             catch (System.IO.FileNotFoundException) { MakeDefaultSizes(); }
@@ -109,7 +113,7 @@ namespace JewelleryCalculationSuite.ViewModels
             _metals.Add(new MetalModel("Wax", 1.0));
             var options = new JsonSerializerOptions { WriteIndented = true };
             _jsonString = JsonSerializer.Serialize(_metals, options);
-            File.WriteAllText(@"Data/Metals.json", _jsonString);
+            File.WriteAllText(@_metalPath, _jsonString);
         }
 
         public void MakeDefaultSizes()
@@ -142,7 +146,7 @@ namespace JewelleryCalculationSuite.ViewModels
             _ringSizes.Add(new RingSizeModel("Z", 13.0, 21.79));
             var options = new JsonSerializerOptions { WriteIndented = true };
             _jsonString = JsonSerializer.Serialize(_ringSizes, options);
-            File.WriteAllText(@"Data/RingSizes.json", _jsonString);
+            File.WriteAllText(@_ringSizePath, _jsonString);
         }
     }
 }

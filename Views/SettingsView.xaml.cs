@@ -23,6 +23,6 @@ namespace JewelleryCalculationSuite.Views
         public SettingsView()
         {
             InitializeComponent();
-        }        
+        }
     }
 }

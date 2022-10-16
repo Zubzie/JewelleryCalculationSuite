@@ -1,0 +1,9 @@
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\bin\Release\net6.0-windows\publish\JewelleryCalculationSuite.exe
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\bin\Release\net6.0-windows\publish\JewelleryCalculationSuite.dll
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\bin\Release\net6.0-windows\publish\JewelleryCalculationSuite.deps.json
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\bin\Release\net6.0-windows\publish\JewelleryCalculationSuite.runtimeconfig.json
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\bin\Release\net6.0-windows\publish\JewelleryCalculationSuite.pdb
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\bin\Release\net6.0-windows\publish\Caliburn.Micro.Platform.Core.dll
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\bin\Release\net6.0-windows\publish\Caliburn.Micro.Platform.dll
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\bin\Release\net6.0-windows\publish\Caliburn.Micro.Core.dll
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\bin\Release\net6.0-windows\publish\Microsoft.Xaml.Behaviors.dll

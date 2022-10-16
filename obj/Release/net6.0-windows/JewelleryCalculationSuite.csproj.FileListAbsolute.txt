@@ -30,3 +30,14 @@ C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Release\net6.
 C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Release\net6.0-windows\JewelleryCalculationSuite.pdb
 C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Release\net6.0-windows\JewelleryCalculationSuite.genruntimeconfig.cache
 C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Release\net6.0-windows\ref\JewelleryCalculationSuite.dll
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Release\net6.0-windows\Views\InformationView.g.cs
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Release\net6.0-windows\Views\MainPageView.g.cs
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Release\net6.0-windows\Views\RingResizerView.g.cs
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Release\net6.0-windows\Views\RollingWireView.g.cs
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Release\net6.0-windows\Views\SettingsView.g.cs
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Release\net6.0-windows\JewelleryCalculationSuite_Content.g.cs
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Release\net6.0-windows\Views\InformationView.baml
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Release\net6.0-windows\Views\MainPageView.baml
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Release\net6.0-windows\Views\RingResizerView.baml
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Release\net6.0-windows\Views\RollingWireView.baml
+C:\Users\jake_\Google Drive\Projects\JewelleryCalculationSuite\obj\Release\net6.0-windows\Views\SettingsView.baml
