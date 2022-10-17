@@ -39,7 +39,7 @@
                 Grid.Row="1" 
                 Grid.Column="1"
                 Width="95"
-                Background="LightBlue"
+                Background="{Binding BackgroundInformation}"
                 ToolTip="Information"
                 Margin="0,0,20,0" >
             <Image Source="{Binding InformationPath}" />
@@ -50,7 +50,7 @@
                 Grid.Row="2" 
                 Grid.Column="1"
                 Width="95"
-                Background="LightBlue"
+                Background="{Binding BackgroundMetalConverter}"
                 ToolTip="Metal Converter"
                 Margin="0,0,20,0" >
             <Image Source="{Binding MetalConverterPath}" />
@@ -61,7 +61,7 @@
                 Grid.Row="3" 
                 Grid.Column="1"
                 Width="95"
-                Background="LightBlue"
+                Background="{Binding BackgroundRingWeight}"
                 ToolTip="Ring Weight"
                 Margin="0,0,20,0" >
             <Image Source="{Binding RingWeightPath}" />
@@ -72,7 +72,7 @@
                 Grid.Row="4" 
                 Grid.Column="1"
                 Width="95"
-                Background="LightBlue"
+                Background="{Binding BackgroundRingResizer}"
                 ToolTip="Ring Resizer"
                 Margin="0,0,20,0" >
             <Image Source="{Binding RingResizerPath}" />
@@ -83,7 +83,7 @@
                 Grid.Row="5" 
                 Grid.Column="1"
                 Width="95"
-                Background="LightBlue"
+                Background="{Binding BackgroundRollingWire}"
                 ToolTip="Rolling Wire"
                 Margin="0,0,20,0" >
             <Image Source="{Binding RollingWirePath}" />
@@ -94,7 +94,7 @@
                 Grid.Row="6" 
                 Grid.Column="1"
                 Width="95"
-                Background="LightBlue"
+                Background="{Binding BackgroundSettings}"
                 ToolTip="Settings"
                 Margin="0,0,20,0" >
             <Image Source="{Binding SettingsPath}" />

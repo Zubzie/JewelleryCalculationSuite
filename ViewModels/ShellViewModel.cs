@@ -13,6 +13,17 @@ namespace JewelleryCalculationSuite.ViewModels
         private readonly string _metalPath;
         private readonly string _ringSizePath;
 
+        private string _backgroundInformation;
+        private string _backgroundMetalConverter;
+        private string _backgroundRingWeight;
+        private string _backgroundRingResizer;
+        private string _backgroundRollingWire;
+        private string _backgroundSettings;
+
+        private string _backgroundUnselected;
+        private string _backgroundSelected;
+
+
         public ShellViewModel()
         {
             ActivateItemAsync(new MainPageViewModel());
@@ -32,36 +43,68 @@ namespace JewelleryCalculationSuite.ViewModels
                 _ringSizes = JsonSerializer.Deserialize<BindableCollection<RingSizeModel>>(_jsonString);
             }
             catch (System.IO.FileNotFoundException) { MakeDefaultSizes(); }
+
+            _backgroundUnselected = "LightBlue";
+            _backgroundSelected = "SlateGray";
         }
 
         public void LoadPageInformation()
         {
             ActivateItemAsync(new InformationViewModel());
+            UnselectBackgrounds();
+            _backgroundInformation = _backgroundSelected;
+            NotifyOfPropertyChange(() => BackgroundInformation);
         }
 
         public void LoadPageMetalConverter()
         {
             ActivateItemAsync(new MetalConverterViewModel(_metals));
+            UnselectBackgrounds();
+            _backgroundMetalConverter = _backgroundSelected;
+            NotifyOfPropertyChange(() => BackgroundMetalConverter);
         }
 
         public void LoadPageRingWeight()
         {
             ActivateItemAsync(new RingWeightViewModel(_metals, _ringSizes));
+            UnselectBackgrounds();
+            _backgroundRingWeight = _backgroundSelected;
+            NotifyOfPropertyChange(() => BackgroundRingWeight);
+
         }
 
         public void LoadPageRingResizer()
         {
             ActivateItemAsync(new RingResizerViewModel(_metals, _ringSizes));
+            UnselectBackgrounds();
+            _backgroundRingResizer = _backgroundSelected;
+            NotifyOfPropertyChange(() => BackgroundRingResizer);
         }
 
         public void LoadPageRollingWire()
         {
            ActivateItemAsync(new RollingWireViewModel());
+           UnselectBackgrounds();
+           _backgroundRollingWire = _backgroundSelected; 
+           NotifyOfPropertyChange(() => BackgroundRollingWire);
         }   
 
         public void LoadPageSettings()
         {
             ActivateItemAsync(new SettingsViewModel(_metals, _ringSizes));
+            UnselectBackgrounds();
+            _backgroundSettings = _backgroundSelected; 
+            NotifyOfPropertyChange(() => BackgroundSettings);
+        }
+
+        public void UnselectBackgrounds()
+        {           
+            _backgroundInformation = _backgroundUnselected; NotifyOfPropertyChange(() => BackgroundInformation);
+            _backgroundMetalConverter = _backgroundUnselected; NotifyOfPropertyChange(() => BackgroundMetalConverter);
+            _backgroundRingWeight = _backgroundUnselected; NotifyOfPropertyChange(() => BackgroundRingWeight);
+            _backgroundRingResizer = _backgroundUnselected; NotifyOfPropertyChange(() => BackgroundRingResizer);
+            _backgroundRollingWire = _backgroundUnselected; NotifyOfPropertyChange(() => BackgroundRollingWire);
+            _backgroundSettings = _backgroundUnselected; NotifyOfPropertyChange(() => BackgroundSettings);
         }
 
         public static string InformationPath
@@ -92,6 +135,42 @@ namespace JewelleryCalculationSuite.ViewModels
         public static string SettingsPath
         {
             get { return Path.GetFullPath("Images/Settings.png"); }
+        }
+
+        public string BackgroundInformation
+        {
+            get { return _backgroundInformation; }
+            set { _backgroundInformation = value; NotifyOfPropertyChange(() => BackgroundInformation); }
+        }
+
+        public string BackgroundMetalConverter
+        {
+            get { return _backgroundMetalConverter; }
+            set { _backgroundMetalConverter = value; NotifyOfPropertyChange(() => BackgroundMetalConverter); }
+        }
+
+        public string BackgroundRingWeight
+        {
+            get { return _backgroundRingWeight; }
+            set { _backgroundRingWeight = value; NotifyOfPropertyChange(() => BackgroundRingWeight); }
+        }
+
+        public string BackgroundRingResizer
+        {
+            get { return _backgroundRingResizer; }
+            set { _backgroundRingResizer = value; NotifyOfPropertyChange(() => BackgroundRingResizer); }
+        }
+
+        public string BackgroundRollingWire
+        {
+            get { return _backgroundRollingWire; }
+            set { _backgroundRollingWire = value; NotifyOfPropertyChange(() => BackgroundRollingWire); }
+        }
+
+        public string BackgroundSettings
+        {
+            get { return _backgroundSettings; }
+            set { _backgroundSettings = value; NotifyOfPropertyChange(() => BackgroundSettings); }
         }
 
         public void MakeDefaultMetals()
