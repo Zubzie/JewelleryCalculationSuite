@@ -16,7 +16,7 @@
     "SpecificGravity": 19.36
   },
   {
-    "Name": "18ct Yellow Gold",
+    "Name": "18ct2 Yellow Gold",
     "SpecificGravity": 16.04
   },
   {
@@ -58,5 +58,13 @@
   {
     "Name": "Wax",
     "SpecificGravity": 1
+  },
+  {
+    "Name": "2",
+    "SpecificGravity": 2
+  },
+  {
+    "Name": "vd",
+    "SpecificGravity": 2
   }
 ]

@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JewelleryCalculationSuite.Views" xmlns:viewmodels="clr-namespace:JewelleryCalculationSuite.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ShellViewModel}"
         mc:Ignorable="d" FontSize="24" FontFamily="Segoe UI"
-        Title="Jewellery Calculation Suite" Height="650" Width="700">
+        Title="Jewellery Calculation Suite" Height="609" Width="750">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="0"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="0"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="0"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -22,7 +22,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="0"/>
         </Grid.RowDefinitions>
 
         <!-- Side bar colour -->
@@ -40,8 +40,7 @@
                 Grid.Column="1"
                 Width="95"
                 Background="{Binding BackgroundInformation}"
-                ToolTip="Information"
-                Margin="0,0,20,0" >
+                ToolTip="Information" >
             <Image Source="{Binding InformationPath}" />
         </Button>
         
@@ -51,8 +50,7 @@
                 Grid.Column="1"
                 Width="95"
                 Background="{Binding BackgroundMetalConverter}"
-                ToolTip="Metal Converter"
-                Margin="0,0,20,0" >
+                ToolTip="Metal Converter" >
             <Image Source="{Binding MetalConverterPath}" />
         </Button>
 
@@ -62,8 +60,7 @@
                 Grid.Column="1"
                 Width="95"
                 Background="{Binding BackgroundRingWeight}"
-                ToolTip="Ring Weight"
-                Margin="0,0,20,0" >
+                ToolTip="Ring Weight" >
             <Image Source="{Binding RingWeightPath}" />
         </Button>
 
@@ -73,8 +70,7 @@
                 Grid.Column="1"
                 Width="95"
                 Background="{Binding BackgroundRingResizer}"
-                ToolTip="Ring Resizer"
-                Margin="0,0,20,0" >
+                ToolTip="Ring Resizer" >
             <Image Source="{Binding RingResizerPath}" />
         </Button>
 
@@ -84,8 +80,7 @@
                 Grid.Column="1"
                 Width="95"
                 Background="{Binding BackgroundRollingWire}"
-                ToolTip="Rolling Wire"
-                Margin="0,0,20,0" >
+                ToolTip="Rolling Wire" >
             <Image Source="{Binding RollingWirePath}" />
         </Button>
 
@@ -95,8 +90,7 @@
                 Grid.Column="1"
                 Width="95"
                 Background="{Binding BackgroundSettings}"
-                ToolTip="Settings"
-                Margin="0,0,20,0" >
+                ToolTip="Settings" >
             <Image Source="{Binding SettingsPath}" />
         </Button>
 

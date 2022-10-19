@@ -10,26 +10,22 @@ namespace JewelleryCalculationSuite.ViewModels
         private BindableCollection<MetalModel> _metals = new();
         private BindableCollection<RingSizeModel> _ringSizes = new();
         private string ?_jsonString;
-        private readonly string _metalPath;
-        private readonly string _ringSizePath;
+        private readonly static string _metalPath = "Data/Metals.json";
+        private readonly static string _ringSizePath = "Data/RingSizes.json";  
+        
+        private readonly static string _backgroundUnselected = "LightBlue";
+        private readonly static string _backgroundSelected = "SlateGray";
 
-        private string _backgroundInformation;
-        private string _backgroundMetalConverter;
-        private string _backgroundRingWeight;
-        private string _backgroundRingResizer;
-        private string _backgroundRollingWire;
-        private string _backgroundSettings;
-
-        private string _backgroundUnselected;
-        private string _backgroundSelected;
-
+        private string _backgroundInformation = _backgroundUnselected;
+        private string _backgroundMetalConverter = _backgroundUnselected;
+        private string _backgroundRingWeight = _backgroundUnselected;
+        private string _backgroundRingResizer = _backgroundUnselected;
+        private string _backgroundRollingWire = _backgroundUnselected;
+        private string _backgroundSettings = _backgroundUnselected;
 
         public ShellViewModel()
         {
             ActivateItemAsync(new MainPageViewModel());
-            _metalPath = "Data/Metals.json";
-            _ringSizePath = "Data/RingSizes.json";
-
             try
             {
                 _jsonString = File.ReadAllText(@_metalPath);
@@ -43,9 +39,6 @@ namespace JewelleryCalculationSuite.ViewModels
                 _ringSizes = JsonSerializer.Deserialize<BindableCollection<RingSizeModel>>(_jsonString);
             }
             catch (System.IO.FileNotFoundException) { MakeDefaultSizes(); }
-
-            _backgroundUnselected = "LightBlue";
-            _backgroundSelected = "SlateGray";
         }
 
         public void LoadPageInformation()
@@ -83,7 +76,7 @@ namespace JewelleryCalculationSuite.ViewModels
 
         public void LoadPageRollingWire()
         {
-           ActivateItemAsync(new RollingWireViewModel());
+           ActivateItemAsync(new RollingWireViewModel(_ringSizes));
            UnselectBackgrounds();
            _backgroundRollingWire = _backgroundSelected; 
            NotifyOfPropertyChange(() => BackgroundRollingWire);

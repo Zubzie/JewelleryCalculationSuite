@@ -5,20 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:JewelleryCalculationSuite.Views" xmlns:viewmodels="clr-namespace:JewelleryCalculationSuite.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:SettingsViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="609" d:DesignWidth="655">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -28,7 +26,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="0"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
         <!-- Heading -->
@@ -88,7 +86,7 @@
         
         <!-- Drop down box for metals -->
         <ComboBox x:Name="MetalDropDown"
-                  ToolTip="List of either Metals or Ring Sizes (adding will put above selected position)"
+                  ToolTip="List of either Metals or Ring Sizes (do not need to select anything for adding)"
                   Grid.Column="2" 
                   Grid.Row="3"
                   Grid.ColumnSpan="2"
@@ -100,7 +98,7 @@
 
         <!-- Drop down box for ring sizes -->
         <ComboBox x:Name="RingSizeDropDown"
-                  ToolTip="List of either Metals or Ring Sizes (adding will put above selected position)"
+                  ToolTip="List of either Metals or Ring Sizes (do not need to select anything for adding)"
                   Grid.Column="2" 
                   Grid.Row="3"
                   Grid.ColumnSpan="2"
@@ -212,13 +210,13 @@
                 Grid.Row="8"   
                 Margin="20,10,20,10" />
 
-        <!-- Invalid input text -->
-        <TextBlock x:Name="InvalidInputText" 
+        <!-- Output text -->
+        <TextBlock x:Name="OutputText" 
                    Grid.Column="2" 
                    Grid.Row="8" 
-                   Grid.ColumnSpan="2"
+                   Grid.ColumnSpan="3"
                    Text="" 
-                   Margin="50,10,50,10" />
+                   Margin="50,10,0,10" />
         
     </Grid>
 </UserControl>

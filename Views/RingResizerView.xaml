@@ -5,17 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:JewelleryCalculationSuite.Views" xmlns:viewmodels="clr-namespace:JewelleryCalculationSuite.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:RingResizerViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="609" d:DesignWidth="655">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -25,7 +25,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="0"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
         <!-- Heading -->
@@ -104,7 +104,7 @@
         <!-- Metal width text -->
         <TextBlock Grid.Column="1" 
                    Grid.Row="6" 
-                   Text="Width (mm)" 
+                   Text="Width" 
                    Margin="50,10,0,10" />
 
         <!-- Metal width input box -->
@@ -117,7 +117,7 @@
         <!-- Metal thickness text -->
         <TextBlock Grid.Column="1" 
                    Grid.Row="7" 
-                   Text="Thickness (mm)" 
+                   Text="Thickness" 
                    Margin="50,10,0,10" />
 
         <!-- Metal thickness input box -->
