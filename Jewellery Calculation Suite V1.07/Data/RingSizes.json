@@ -1,0 +1,158 @@
+[
+  {
+    "Name": "A / 0.5",
+    "LetterSize": "A",
+    "NumberSize": 0.5,
+    "Diameter": 12.04
+  },
+  {
+    "Name": "B / 1",
+    "LetterSize": "B",
+    "NumberSize": 1,
+    "Diameter": 12.45
+  },
+  {
+    "Name": "C / 1.5",
+    "LetterSize": "C",
+    "NumberSize": 1.5,
+    "Diameter": 12.85
+  },
+  {
+    "Name": "D / 2",
+    "LetterSize": "D",
+    "NumberSize": 2,
+    "Diameter": 13.26
+  },
+  {
+    "Name": "E / 2.5",
+    "LetterSize": "E",
+    "NumberSize": 2.5,
+    "Diameter": 13.67
+  },
+  {
+    "Name": "F / 3",
+    "LetterSize": "F",
+    "NumberSize": 3,
+    "Diameter": 14.07
+  },
+  {
+    "Name": "G / 3.5",
+    "LetterSize": "G",
+    "NumberSize": 3.5,
+    "Diameter": 14.48
+  },
+  {
+    "Name": "H / 4",
+    "LetterSize": "H",
+    "NumberSize": 4,
+    "Diameter": 14.88
+  },
+  {
+    "Name": "I / 4.5",
+    "LetterSize": "I",
+    "NumberSize": 4.5,
+    "Diameter": 15.29
+  },
+  {
+    "Name": "J / 5",
+    "LetterSize": "J",
+    "NumberSize": 5,
+    "Diameter": 15.49
+  },
+  {
+    "Name": "K / 5.5",
+    "LetterSize": "K",
+    "NumberSize": 5.5,
+    "Diameter": 15.9
+  },
+  {
+    "Name": "L / 6",
+    "LetterSize": "L",
+    "NumberSize": 6,
+    "Diameter": 16.31
+  },
+  {
+    "Name": "M / 6.5",
+    "LetterSize": "M",
+    "NumberSize": 6.5,
+    "Diameter": 16.71
+  },
+  {
+    "Name": "N / 7",
+    "LetterSize": "N",
+    "NumberSize": 7,
+    "Diameter": 17.12
+  },
+  {
+    "Name": "O / 7.5",
+    "LetterSize": "O",
+    "NumberSize": 7.5,
+    "Diameter": 17.53
+  },
+  {
+    "Name": "P / 8",
+    "LetterSize": "P",
+    "NumberSize": 8,
+    "Diameter": 17.93
+  },
+  {
+    "Name": "Q / 8.5",
+    "LetterSize": "Q",
+    "NumberSize": 8.5,
+    "Diameter": 18.34
+  },
+  {
+    "Name": "R / 9",
+    "LetterSize": "R",
+    "NumberSize": 9,
+    "Diameter": 18.75
+  },
+  {
+    "Name": "S / 9.5",
+    "LetterSize": "S",
+    "NumberSize": 9.5,
+    "Diameter": 19.15
+  },
+  {
+    "Name": "T / 10",
+    "LetterSize": "T",
+    "NumberSize": 10,
+    "Diameter": 19.56
+  },
+  {
+    "Name": "U / 10.5",
+    "LetterSize": "U",
+    "NumberSize": 10.5,
+    "Diameter": 19.96
+  },
+  {
+    "Name": "V / 11",
+    "LetterSize": "V",
+    "NumberSize": 11,
+    "Diameter": 20.37
+  },
+  {
+    "Name": "W / 11.5",
+    "LetterSize": "W",
+    "NumberSize": 11.5,
+    "Diameter": 20.78
+  },
+  {
+    "Name": "X / 12",
+    "LetterSize": "X",
+    "NumberSize": 12,
+    "Diameter": 21.18
+  },
+  {
+    "Name": "Y / 12.5",
+    "LetterSize": "Y",
+    "NumberSize": 12.5,
+    "Diameter": 21.59
+  },
+  {
+    "Name": "Z / 13",
+    "LetterSize": "Z",
+    "NumberSize": 13,
+    "Diameter": 21.79
+  }
+]
